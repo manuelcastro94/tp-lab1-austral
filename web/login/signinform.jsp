@@ -13,8 +13,8 @@
 <body>
 <form id="<%=Constants.HOME_FORM_ID%>"
       action="<%=response.encodeURL("securepage.jsp")%>" method="POST">
-    <input type="text" name="<%=Constants.USER_EMAIL%>">
-    <input type="text" name="<%=Constants.USER_PASSWORD%>">
+    e-mail: <input type="text" name="<%=Constants.USER_EMAIL%>">
+    Password: <input type="password" name="<%=Constants.USER_PASSWORD%>">
     <input type="submit" name="<%=Constants.SIGN_IN%>" value="Sign in">
 </form>
 </body>

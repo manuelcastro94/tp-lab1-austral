@@ -7,7 +7,7 @@
 <body>
 <h1><%=model.Constants.HOME_TITLE%>
 </h1>
-You are seen StudyRoom as a public user
+You are seeing StudyRoom as a public user
 
 <h2>Login to your StudyRoom account</h2>
 <%@include file="loginform.jsp" %>
