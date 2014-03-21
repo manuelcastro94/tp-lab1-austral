@@ -9,24 +9,29 @@ import java.io.Serializable;
  * Time: 18:17
  * To change this template use File | Settings | File Templates.
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
-    private String userName;
+    //    private String userName;
     private String email;
     private String password;
 
-    public User(String userName, String email, String password) {
-        this.userName = userName;
+    public User(/*String userName,*/ String email, String password) {
+//        this.userName = userName;
         this.email = email;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
-    }
+//    public String getUserName() {
+//        return userName;
+//    }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
+
+    //TODO: hacer que este metodo se fije de alguna forma si el usuario existe en la base de datos
+    public static boolean valid(User user) {
+        return Math.random() > 0.5;
     }
 
     public String getEMail() {
