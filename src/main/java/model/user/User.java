@@ -29,6 +29,7 @@ public class User implements Serializable {
 //        this.userName = userName;
 //    }
 
+
     //TODO: hacer que este metodo se fije de alguna forma si el usuario existe en la base de datos
     public static boolean valid(User user) {
         return Math.random() > 0.5;
