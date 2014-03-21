@@ -7,12 +7,12 @@
 <body>
 <h1><%=model.Constants.HOME_TITLE%>
 </h1>
-Welcome to the Security Filter example application. Use the menu above to navigate the site.
+You are seen StudyRoom as a public user
 
-<h2>POST to the Secure Page</h2>
-This form POSTs to the Secure Page. By entering a value here and clicking the submit button below, you can
-verify that POSTed parameters are maintained through the login sequence.
+<h2>Login to your StudyRoom account</h2>
 <%@include file="loginform.jsp" %>
 
+<h2>Don't have an account? Sign in</h2>
+<%@include file="signinform.jsp" %>
 </body>
 </html>

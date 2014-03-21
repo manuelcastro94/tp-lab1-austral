@@ -1,3 +1,4 @@
+<%@ page import="model.Constants" %>
 <%@ page import="model.user.User" %>
 
 <html>
@@ -12,9 +13,14 @@
 </h1>
 <%
     User user = new User(request.getParameter(model.Constants.USER_EMAIL), request.getParameter(model.Constants.USER_PASSWORD));
+    if (!User.valid(user)) {
+        response.sendRedirect("forbiddenpage.jsp");
+    } else if (request.getParameter(Constants.SIGN_IN) == null) {
 %>
 <h2>Valid user name, welcome back!</h2>
-
+<%} else {%>
+<h2>Welcome to StudyRoom!</h2>
+<%}%>
 <form name="<%=model.Constants.SECURE_POSTED_VALUE_FORM%>" action="">
     Yor email is:
     <ul>

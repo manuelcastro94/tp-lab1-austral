@@ -65,9 +65,11 @@ public interface Constants {
 
     public static final String USER_EMAIL = "userEmailInput";
     public static final String USER_PASSWORD = "userPasswordInput";
+    public static final String SIGN_IN_FORM = "signinForm";
+    public static final String SIGN_IN = "signin";
 
    // shared constants
-   public static final String COMMON_TITLE_BASE = "SecurityFilter Example Application: ";
+   public static final String COMMON_TITLE_BASE = "STUDY ROOM ";
    // home page constants
    public static final String HOME_TITLE = COMMON_TITLE_BASE + "Home";
     // login form constants
