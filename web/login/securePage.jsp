@@ -13,7 +13,7 @@
 </h1>
 <%
     User user = new User(request.getParameter(model.Constants.USER_EMAIL), request.getParameter(model.Constants.USER_PASSWORD));
-    if (!User.valid(user)) {
+    if (!User.valid(user) && request.getParameter(Constants.SIGN_IN) == null) {
         response.sendRedirect("forbiddenpage.jsp");
     } else if (request.getParameter(Constants.SIGN_IN) == null) {
 %>
