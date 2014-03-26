@@ -53,7 +53,7 @@
  * ====================================================================
  */
 
-package model;
+package model.user;
 
 /**
  * Constants - constants for the example applications to facilitate testing
@@ -63,15 +63,10 @@ package model;
  */
 public interface Constants {
 
-    public static final String USER_EMAIL = "userEmailInput";
-    public static final String USER_PASSWORD = "userPasswordInput";
-    public static final String SIGN_IN_FORM = "signinForm";
-    public static final String SIGN_IN = "signin";
-
-   // shared constants
-   public static final String COMMON_TITLE_BASE = "STUDY ROOM ";
-   // home page constants
-   public static final String HOME_TITLE = COMMON_TITLE_BASE + "Home";
+    // shared constants
+    public static final String COMMON_TITLE_BASE = "SecurityFilter Example Application: ";
+    // home page constants
+    public static final String HOME_TITLE = COMMON_TITLE_BASE + "Home";
     // login form constants
     public static final String LOGIN_TITLE = COMMON_TITLE_BASE + "Login Page";
     // secure page constants
@@ -85,12 +80,12 @@ public interface Constants {
     public static final String VALID_ROLE = "inthisrole";
     public static final String HOME_FORM_ID = "homeForm";
     public static final String HOME_POST_FIELD = "postMe";
-   public static final String LOGIN_FORM_ID = "loginForm";
-   public static final String LOGIN_FORM_ACTION = "j_security_check";
-   public static final String LOGIN_USERNAME_FIELD = "j_username";
-   public static final String LOGIN_PASSWORD_FIELD = "j_password";
+    public static final String LOGIN_FORM_ID = "loginForm";
+    public static final String LOGIN_FORM_ACTION = "j_security_check";
+    public static final String LOGIN_USERNAME_FIELD = "j_username";
+    public static final String LOGIN_PASSWORD_FIELD = "j_password";
     public static final String LOGIN_REMEMBERME_FIELD = "j_rememberme";
-   public static final String SECURE_POSTED_VALUE_FORM = "postedValueForm";
-   public static final String SECURE_POSTED_VALUE_FIELD = "postedValue";
-   public static final String SECURE_LAST_POSTED_VALUE_FIELD = "lastPostedValue";
+    public static final String SECURE_POSTED_VALUE_FORM = "postedValueForm";
+    public static final String SECURE_POSTED_VALUE_FIELD = "postedValue";
+    public static final String SECURE_LAST_POSTED_VALUE_FIELD = "lastPostedValue";
 }
