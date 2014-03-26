@@ -78,7 +78,7 @@ public class TrivialSecurityRealm extends SimpleSecurityRealmBase {
      *
      * @param username a username
      * @param password a plain text password, as entered by the user
-     * @return null if the user cannot be authenticated, otherwise a Pricipal object is returned
+     * @return null if the user cannot be authenticated, otherwise a Principal object is returned
      */
     public boolean booleanAuthenticate(String username, String password) {
         return (
