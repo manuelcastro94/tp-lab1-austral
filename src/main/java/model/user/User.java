@@ -1,6 +1,10 @@
 package model.user;
 
+import model.Connection;
+
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,10 +33,23 @@ public class User implements Serializable {
 //        this.userName = userName;
 //    }
 
+    public static boolean exist(User user) {
+        ResultSet dataBase = Connection.getDataBase();
+        try {
+            while (dataBase.next()) {
+                if (user.isTheSame(new User(dataBase.getString(1), dataBase.getString(2)))) {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-    //TODO: hacer que este metodo se fije de alguna forma si el usuario existe en la base de datos
-    public static boolean valid(User user) {
-        return Math.random() > 0.5;
+
+    public boolean isTheSame(User user) {
+        return this.getEMail().equals(user.getEMail()) && this.getPassword().equals(user.getPassword());
     }
 
     public String getEMail() {
