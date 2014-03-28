@@ -22,8 +22,8 @@ Welcome <i><%=request.getRemoteUser()%>
 %>
 <h2>You POSTed a value from the Home Page!</h2>
 
-<form name="<%=Constants.SECURE_POSTED_VALUE_FORM%>" action="">
-    The value you just posted was:
+<form name="<%=Constants.SECURE_POSTED_VALUE_FORM%>" action="UserServlet" method="get">
+The value you just posted was:
     <ul>
         <li>
             <%=postedValue%>

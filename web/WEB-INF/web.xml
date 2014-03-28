@@ -30,6 +30,15 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>model.user.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/UserServlet</url-pattern>
+    </servlet-mapping>
+
     <!-- SecurityFilter works with custom error pages -->
     <!--<error-page>-->
     <!--<error-code>403</error-code>-->
