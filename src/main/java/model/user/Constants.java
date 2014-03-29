@@ -64,7 +64,7 @@ package model.user;
 public interface Constants {
 
     // shared constants
-    public static final String COMMON_TITLE_BASE = "SecurityFilter Example Application: ";
+    public static final String COMMON_TITLE_BASE = "StudyRoom ";
     // home page constants
     public static final String HOME_TITLE = COMMON_TITLE_BASE + "Home";
     // login form constants
@@ -73,7 +73,7 @@ public interface Constants {
     public static final String SECURE_TITLE = COMMON_TITLE_BASE + "Secure Page";
     // logout page constants
     public static final String LOGOUT_TITLE = COMMON_TITLE_BASE + "Logout";
-    public static final String VALID_USERNAME = "username";
+    public static final String VALID_USERNAME = "user@example.com";
     public static final String VALID_PASSWORD = "password";
     public static final String VALID_USERNAME2 = "username2";
     public static final String VALID_PASSWORD2 = "password2";
@@ -81,6 +81,7 @@ public interface Constants {
     public static final String HOME_FORM_ID = "homeForm";
     public static final String HOME_POST_FIELD = "postMe";
     public static final String LOGIN_FORM_ID = "loginForm";
+    public static final String REGISTER_FORM_ID = "registerForm";
     public static final String LOGIN_FORM_ACTION = "j_security_check";
     public static final String LOGIN_USERNAME_FIELD = "j_username";
     public static final String LOGIN_PASSWORD_FIELD = "j_password";
@@ -88,4 +89,6 @@ public interface Constants {
     public static final String SECURE_POSTED_VALUE_FORM = "postedValueForm";
     public static final String SECURE_POSTED_VALUE_FIELD = "postedValue";
     public static final String SECURE_LAST_POSTED_VALUE_FIELD = "lastPostedValue";
+    public static final String LOG_IN = "logIn";
+    public static final String REGISTER = "register";
 }

@@ -1,10 +1,12 @@
 body {
-    background-color: #d2b48c;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding: 30px 30px 30px 30px;
+    /*background-color: #d2b48c;*/
+    background-color: rgb(233, 234, 237);
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 20px 10px 10px 10px;
     font-family: sans-serif;
 }
+
 h1 {
     font-style: italic;
 }

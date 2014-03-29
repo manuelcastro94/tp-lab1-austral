@@ -11,7 +11,6 @@
 <h1><%=Constants.SECURE_TITLE%>
 </h1>
 
-<%@include file="../loginjsp/menu.jsp" %>
 
 Welcome <i><%=request.getRemoteUser()%>
 </i>, you are viewing a secure page.
@@ -20,7 +19,7 @@ Welcome <i><%=request.getRemoteUser()%>
     String postedValue = request.getParameter(Constants.HOME_POST_FIELD);
     if (postedValue != null) {
 %>
-<h2>You POSTed a value from the Home Page!</h2>
+<h2>ESTA ES UNA PAGINA SEGURA</h2>
 
 <form name="<%=Constants.SECURE_POSTED_VALUE_FORM%>">
     The value you just posted was:

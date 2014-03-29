@@ -28,6 +28,9 @@ public class UserServlet extends HttpServlet {
         resp.encodeURL(Constants.LOGIN_FORM_ACTION);
         PrintWriter out = resp.getWriter();
         User user = new User(req.getParameter(Constants.LOGIN_USERNAME_FIELD), req.getParameter(Constants.LOGIN_PASSWORD_FIELD));
-        out.println(User.exist(user));
+        out.println(req.getRemoteUser());
+        out.println(req.getUserPrincipal());
+        out.println(user);
+//        resp.sendRedirect("secured/securedPage.jsp");
     }
 }
