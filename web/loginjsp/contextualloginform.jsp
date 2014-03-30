@@ -10,14 +10,13 @@
 <style type="text/css">
     <%@include file="../css/contextuallogin" %>
 </style>
-<form id="<%=Constants.LOGIN_FORM_ID%>" action="/studyroom/UserServlet" method="POST">
-
+<form id="<%=Constants.LOGIN_FORM_ID%>" action="<%=response.encodeURL(Constants.LOGIN_FORM_ACTION)%>" method="POST">
+    <%if (request.getRemoteUser() == null) {%>
     Email:
     <input type="text"
            name="<%=Constants.LOGIN_USERNAME_FIELD%>"
            value="<%=Constants.VALID_USERNAME%>"
             >
-
 
     Password:
     <input type="password"
@@ -29,5 +28,8 @@
     <input type="Submit" value="<%=Constants.LOG_IN%>">
 
     <%@include file="../loginjsp/registerform.jsp" %>
+    <%} else {%>
+    Welcome <%=request.getRemoteUser()%>
+    <%}%>
 </form>
 </html>

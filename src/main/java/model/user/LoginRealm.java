@@ -53,9 +53,9 @@
 * ====================================================================
 */
 
-package model.user.realm;
+package model.user;
 
-import model.user.Constants;
+import model.Constants;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 
 /**
@@ -67,7 +67,7 @@ import org.securityfilter.realm.SimpleSecurityRealmBase;
  * @author Max Cooper (max@maxcooper.com)
  * @version $Revision: 1.3 $ $Date: 2003/10/25 10:49:04 $
  */
-public class TrivialSecurityRealm extends SimpleSecurityRealmBase {
+public class LoginRealm extends SimpleSecurityRealmBase {
 
     private String exampleProperty;
 
@@ -81,11 +81,7 @@ public class TrivialSecurityRealm extends SimpleSecurityRealmBase {
      * @return null if the user cannot be authenticated, otherwise a Principal object is returned
      */
     public boolean booleanAuthenticate(String username, String password) {
-        System.out.println(username);
-        return (
-                (Constants.VALID_USERNAME.equals(username) && Constants.VALID_PASSWORD.equals(password))
-                        || (Constants.VALID_USERNAME2.equals(username) && Constants.VALID_PASSWORD2.equals(password))
-        );
+        return User.exist(new User(username, password));
     }
 
     /**
@@ -98,7 +94,6 @@ public class TrivialSecurityRealm extends SimpleSecurityRealmBase {
      * @return true if the user is in the role, false otherwise
      */
     public boolean isUserInRole(String username, String role) {
-        System.out.println(username);
         return (
                 (Constants.VALID_USERNAME.equals(username) || Constants.VALID_USERNAME2.equals(username))
                         && Constants.VALID_ROLE.equals(role)

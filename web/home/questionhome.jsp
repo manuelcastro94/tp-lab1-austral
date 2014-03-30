@@ -1,16 +1,18 @@
-<%@ page import="model.Constants" %>
 <%--
   Created by IntelliJ IDEA.
   User: Federico
-  Date: 28/03/2014
-  Time: 21:42
+  Date: 29/03/2014
+  Time: 23:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
+    <title></title>
+</head>
 <body>
-<form id="<%=Constants.REGISTER_FORM_ID%>" method="POST">
-    <input type="Submit" value="<%=Constants.REGISTER%>">
-</form>
+Usar la imaginacion y creer que aca se ven preguntas
+
+<%@include file="/secured/answerform.jsp" %>
 </body>
 </html>

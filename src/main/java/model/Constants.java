@@ -53,7 +53,7 @@
  * ====================================================================
  */
 
-package model.user;
+package model;
 
 /**
  * Constants - constants for the example applications to facilitate testing

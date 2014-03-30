@@ -50,3 +50,4 @@ INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA PUBLIC
 INSERT INTO USER VALUES('federicofavale@outlook.com','123')
 INSERT INTO USER VALUES('manuelcernello@gmail.com','123')
+INSERT INTO USER VALUES('user@example.com','password')

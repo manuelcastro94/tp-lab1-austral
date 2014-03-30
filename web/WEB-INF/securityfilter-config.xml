@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!DOCTYPE securityfilter-config PUBLIC
-        "-//SecurityFilter.org//DTD Security Filter Configuration 1.1//EN"
-        "http://www.securityfilter.org/dtd/securityfilter-config_1_1.dtd">
+        "-//SecurityFilter.org//DTD Security Filter Configuration 2.0//EN"
+        "http://www.securityfilter.org/dtd/securityfilter-config_2_0.dtd">
 
 <securityfilter-config>
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Secure Page</web-resource-name>
+            <web-resource-name>SecurePage</web-resource-name>
             <url-pattern>/secured/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
@@ -19,13 +19,13 @@
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
-            <form-login-page>/loginjsp/loginForm.jsp</form-login-page>
-            <form-error-page>/loginError.jsp</form-error-page>
+            <form-login-page>/loginjsp/contextualloginform.jsp</form-login-page>
+            <form-error-page>/index.jsp</form-error-page>
             <form-default-page>/index.jsp</form-default-page>
         </form-login-config>
     </login-config>
 
-    <realm className="model.user.realm.TrivialSecurityRealm">
+    <realm className="model.user.LoginRealm">
         <realm-param name="exampleProperty" value="it works!"/>
     </realm>
 
