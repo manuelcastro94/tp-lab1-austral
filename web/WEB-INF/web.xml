@@ -34,6 +34,7 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>model.user.RegisterServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>

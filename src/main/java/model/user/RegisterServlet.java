@@ -17,12 +17,19 @@ import java.io.IOException;
  */
 public class RegisterServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (User.exist(new User(req.getParameter(Constants.LOGIN_USERNAME_FIELD), req.getParameter(Constants.LOGIN_PASSWORD_FIELD)))) {
-            return;
-        }
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        System.out.println("AAAAAAAAAAAAAAA");
+        model.Connection.setUser(new User(req.getParameter(Constants.LOGIN_USERNAME_FIELD), req.getParameter(Constants.LOGIN_PASSWORD_FIELD)));
     }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("WWWWWWWWWWWW");
+        super.doGet(req, resp);
+    }
+
 
     // from ex UserServlet
     ////        resp.encodeURL(Constants.LOGIN_FORM_ACTION);

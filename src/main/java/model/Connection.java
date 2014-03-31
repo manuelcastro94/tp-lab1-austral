@@ -1,6 +1,7 @@
 package model;
 
-import java.io.PrintWriter;
+import model.user.User;
+
 import java.sql.*;
 
 /**
@@ -32,6 +33,30 @@ public class Connection {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void setUser(User user) {
+        try {
+            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            System.out.println(Thread.currentThread().getContextClassLoader().getResource("").toString().replaceAll("out/artifacts/Lab1_war_exploded/WEB-INF/classes/", "lib/studyroom").substring(6));
+            java.sql.Connection con = DriverManager.getConnection("jdbc:hsqldb:" + Thread.currentThread().getContextClassLoader().getResource("").toString().replaceAll("out/artifacts/Lab1_war_exploded/WEB-INF/classes/", "lib/studyroom").substring(6));
+            PreparedStatement pst = con.prepareStatement("insert into PUBLIC.USER values(?,?)");
+            ResultSet rs = pst.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            pst.setString(1, user.getEMail());
+            pst.setString(2, user.getPassword());
+            int i = pst.executeUpdate();
+            if (i != 0) {
+                System.out.println("<br>Date has been inserted in to Datebase");
+            } else {
+                System.out.println("failed to insert the data");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 //    PrintWriter out = resp.getWriter();
