@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <style type="text/css">
-    <%@include file="../css/contextuallogin" %>
+    <%@include file="../css/contextuallogin.css" %>
+    <%@include file="../css/buttonStyle.css" %>
 </style>
 <form id="<%=Constants.LOGIN_FORM_ID%>" action="<%=response.encodeURL(Constants.LOGIN_FORM_ACTION)%>" method="POST">
     <%if (request.getRemoteUser() == null) {%>

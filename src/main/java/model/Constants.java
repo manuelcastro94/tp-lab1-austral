@@ -89,6 +89,6 @@ public interface Constants {
     public static final String SECURE_POSTED_VALUE_FORM = "postedValueForm";
     public static final String SECURE_POSTED_VALUE_FIELD = "postedValue";
     public static final String SECURE_LAST_POSTED_VALUE_FIELD = "lastPostedValue";
-    public static final String LOG_IN = "logIn";
-    public static final String REGISTER = "register";
+    public static final String LOG_IN = "Log In";
+    public static final String REGISTER = "Sign In";
 }

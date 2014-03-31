@@ -56,6 +56,7 @@
 package model.user;
 
 import model.Constants;
+import model.user.User;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 
 /**
