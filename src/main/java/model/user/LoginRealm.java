@@ -56,7 +56,6 @@
 package model.user;
 
 import model.Constants;
-import model.user.User;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 
 /**
@@ -82,6 +81,35 @@ public class LoginRealm extends SimpleSecurityRealmBase {
      * @return null if the user cannot be authenticated, otherwise a Principal object is returned
      */
     public boolean booleanAuthenticate(String username, String password) {
+        User loginUser = new User(username, password);
+
+
+//        Configuration configuration = new Configuration();
+//
+//        // do stuff to configuration
+//
+//        StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+//
+//
+//
+//        Session session = configuration.buildSessionFactory(serviceRegistryBuilder.getBootstrapServiceRegistry()).getCurrentSession();
+//        org.hibernate.Transaction tr = session.beginTransaction();
+//;
+//        List<User> users=session.createQuery("from User u where u. ").list();
+
+//        String strSql ="from  ";
+//        Query query = session.createQuery(strSql);
+//        List lst = query.list();
+//        for(Iterator it=lst.iterator();it.hasNext();){
+//
+//            User emp=(User)it.next();
+//            if (emp.equals(loginUser)){
+//                return true;
+//            }
+//        }
+//
+//        tr.commit();
+//        return false;
         return User.exist(new User(username, password));
     }
 

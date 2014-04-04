@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+        <property name="hibernate.connection.url">
+            jdbc:hsqldb:C:\Users\Federico\SkyDrive\Documentos\Programacion\Lab1\lib\studyroom
+        </property>
+        <property name="hibernate.connection.username"/>
+        <property name="hibernate.connection.password"/>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="use_sql_comments">false</property>
+
+
+        <!-- Use the thread as the context -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Use these files for mapping configuration -->
+        <!--<mapping resource="test/Person.hbm.xml"/>-->
+    </session-factory>
+</hibernate-configuration>
+        <!--<?xml version='1.0' encoding='utf-8'?>-->
+        <!--<!DOCTYPE hibernate-configuration PUBLIC-->
+        <!--"-//Hibernate/Hibernate Configuration DTD//EN"-->
+        <!--"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">-->
+        <!--<hibernate-configuration>-->
+        <!--<session-factory>-->
+        <!--<property name="jdbc:hsqldb:C:\Users\Federico\SkyDrive\Documentos\Programacion\Lab1\lib\studyroom"/>-->
+        <!--<property name="org.hsqldb.jdbc.JDBCDriver"/>-->
+        <!--<property name="connection.username"/>-->
+        <!--<property name="connection.password"/>-->
+        <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
+        <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
+        <!--</session-factory>-->
+        <!--</hibernate-configuration>-->
+
+        <!--<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"-->
+        <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+        <!--xsi:schemaLocation="http://java.sun.com/xml/ns/persistence-->
+        <!--http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd">-->
+        <!--<persistence-unit name="psunit1">-->
+
+        <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+        <!--<class>model.user.User</class>-->
+        <!--<properties>-->
+        <!--<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>-->
+        <!--<property name="hibernate.connection.url"-->
+        <!--value="jdbc:hsqldb:C:\Users\Federico\SkyDrive\Documentos\Programacion\Lab1\lib\studyroom"/>-->
+        <!--<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbc.JDBCDriver"/>-->
+        <!--<property name="hibernate.connection.username" value="root"/>-->
+        <!--<property name="hibernate.connection.password" value="root"/>-->
+        <!--<property name="hibernate.show_sql" value="true"/>-->
+        <!--<property name="hibernate.format_sql" value="true"/>-->
+        <!--</properties>-->
+
+        <!--</persistence-unit>-->
+        <!--</persistence>-->

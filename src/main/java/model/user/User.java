@@ -2,42 +2,36 @@ package model.user;
 
 import model.Connection;
 
-import java.io.Serializable;
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Federico F. Favale
- * Date: 18/03/14
- * Time: 18:17
+ * Date: 04/04/2014
+ * Time: 13:10
  * To change this template use File | Settings | File Templates.
  */
-public class User implements Serializable {
-
-    //    private String userName;
+@Entity
+@Table(name = "USER", schema = "PUBLIC", catalog = "PUBLIC")
+public class User {
     private String email;
     private String password;
 
-    public User(/*String userName,*/ String email, String password) {
-//        this.userName = userName;
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-//    public String getUserName() {
-//        return userName;
-//    }
-
-//    public void setUserName(String userName) {                         user
-//        this.userName = userName;
-//    }
+    public User() {
+    }
 
     public static boolean exist(User user) {
         ResultSet dataBase = Connection.getDataBase();
         try {
             while (dataBase.next()) {
-                if (user.isTheSame(new User(dataBase.getString(1), dataBase.getString(2)))) {
+                if (user.equals(new User(dataBase.getString(1), dataBase.getString(2)))) {
                     return true;
                 }
             }
@@ -47,19 +41,18 @@ public class User implements Serializable {
         return false;
     }
 
-
-    public boolean isTheSame(User user) {
-        return this.getEMail().equals(user.getEMail()) && this.getPassword().equals(user.getPassword());
-    }
-
-    public String getEMail() {
+    @Id
+    @Column(name = "EMAIL")
+    public String getEmail() {
         return email;
     }
 
-    public void setEMail(String eMail) {
-        this.email = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    @Basic
+    @Column(name = "PASSWORD")
     public String getPassword() {
         return password;
     }
@@ -69,10 +62,31 @@ public class User implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User that = (User) o;
+
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = email != null ? email.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }

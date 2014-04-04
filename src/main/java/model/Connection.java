@@ -43,7 +43,7 @@ public class Connection {
             PreparedStatement pst = con.prepareStatement("insert into PUBLIC.USER values(?,?)");
             ResultSet rs = pst.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
-            pst.setString(1, user.getEMail());
+            pst.setString(1, user.getEmail());
             pst.setString(2, user.getPassword());
             int i = pst.executeUpdate();
             if (i != 0) {
