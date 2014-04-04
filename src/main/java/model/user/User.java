@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Federico F. Favale
+ * model.user.User: Federico F. Favale
  * Date: 04/04/2014
  * Time: 13:10
  * To change this template use File | Settings | File Templates.
@@ -83,7 +83,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "model.user.User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

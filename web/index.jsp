@@ -4,7 +4,7 @@
     <title><%=Constants.HOME_TITLE%>
     </title>
     <%@include file="loginjsp/contextualloginform.jsp" %>
-    <style type = "text/css">
+    <style type="text/css">
         <%@include file="css/indexStyle.css" %>
     </style>
 

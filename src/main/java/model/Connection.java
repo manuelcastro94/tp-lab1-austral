@@ -6,7 +6,7 @@ import java.sql.*;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Federico F. Favale
+ * model.user.User: Federico F. Favale
  * Date: 28/03/2014
  * Time: 17:42
  * To change this template use File | Settings | File Templates.
@@ -62,7 +62,7 @@ public class Connection {
 //    PrintWriter out = resp.getWriter();
 //    try {
 //        Class.forName("org.hsqldb.jdbc.JDBCDriver");
-//        java.sql.Connection con = DriverManager.getConnection("jdbc:hsqldb:file:C:/Users/Federico/SkyDrive/Documentos/Programacion/Lab1/lib/studyroom");
+//        java.sql.model.Connection con = DriverManager.getConnection("jdbc:hsqldb:file:C:/Users/Federico/SkyDrive/Documentos/Programacion/Lab1/lib/studyroom");
 //        PreparedStatement ps = con.prepareStatement("SELECT * FROM PUBLIC.USER");
 ////            ps.setString(1,"AAAAA");
 //        ResultSet rs = ps.executeQuery();

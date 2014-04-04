@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Federico
+  model.user.User: Federico
   Date: 28/03/2014
   Time: 21:10
   To change this template use File | Settings | File Templates.

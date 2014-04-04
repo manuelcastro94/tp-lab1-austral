@@ -31,13 +31,13 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-name>model.user.RegisterServlet</servlet-name>
         <servlet-class>model.user.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/RegisterServlet</url-pattern>
+        <servlet-name>model.user.RegisterServlet</servlet-name>
+        <url-pattern>/model.user.RegisterServlet</url-pattern>
     </servlet-mapping>
 
     <!-- SecurityFilter works with custom error pages -->

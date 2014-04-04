@@ -1,5 +1,6 @@
 package model.user;
 
+import model.Connection;
 import model.Constants;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Federico F. Favale
+ * model.user.User: Federico F. Favale
  * Date: 28/03/2014
  * Time: 21:44
  * To change this template use File | Settings | File Templates.
@@ -20,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         System.out.println("AAAAAAAAAAAAAAA");
-        model.Connection.setUser(new User(req.getParameter(Constants.LOGIN_USERNAME_FIELD), req.getParameter(Constants.LOGIN_PASSWORD_FIELD)));
+        Connection.setUser(new User(req.getParameter(Constants.LOGIN_USERNAME_FIELD), req.getParameter(Constants.LOGIN_PASSWORD_FIELD)));
     }
 
 
@@ -32,9 +33,9 @@ public class RegisterServlet extends HttpServlet {
 
 
     // from ex UserServlet
-    ////        resp.encodeURL(Constants.LOGIN_FORM_ACTION);
+    ////        resp.encodeURL(model.Constants.LOGIN_FORM_ACTION);
 ////        PrintWriter out = resp.getWriter();
-////        User user = new User(req.getParameter(Constants.LOGIN_USERNAME_FIELD), req.getParameter(Constants.LOGIN_PASSWORD_FIELD));
+////        model.user.User user = new model.user.User(req.getParameter(model.Constants.LOGIN_USERNAME_FIELD), req.getParameter(model.Constants.LOGIN_PASSWORD_FIELD));
 ////        out.println(req.getRemoteUser());
 ////        out.println(req.getUserPrincipal());
 ////        out.println(user);

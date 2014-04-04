@@ -1,3 +1,5 @@
+package model;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,7 +13,7 @@ import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Federico F. Favale
+ * model.user.User: Federico F. Favale
  * Date: 01/04/2014
  * Time: 15:54
  * To change this template use File | Settings | File Templates.

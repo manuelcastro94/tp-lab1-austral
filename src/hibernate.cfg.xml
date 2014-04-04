@@ -30,7 +30,7 @@
 
         <!-- Use the thread as the context -->
         <property name="hibernate.current_session_context_class">thread</property>
-
+        <mapping class="model.user.User"/>
         <!-- Use these files for mapping configuration -->
         <!--<mapping resource="test/Person.hbm.xml"/>-->
     </session-factory>

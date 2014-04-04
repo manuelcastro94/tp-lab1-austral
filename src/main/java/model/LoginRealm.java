@@ -1,4 +1,4 @@
-/*
+package model;/*
 * $Header: /cvsroot/securityfilter/securityfilter/src/example/org/securityfilter/example/realm/TrivialSecurityRealm.java,v 1.3 2003/10/25 10:49:04 maxcooper Exp $
 * $Revision: 1.3 $
 * $Date: 2003/10/25 10:49:04 $
@@ -53,9 +53,9 @@
 * ====================================================================
 */
 
-package model.user;
-
-import model.Constants;
+import model.user.User;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 
 /**
@@ -81,9 +81,9 @@ public class LoginRealm extends SimpleSecurityRealmBase {
      * @return null if the user cannot be authenticated, otherwise a Principal object is returned
      */
     public boolean booleanAuthenticate(String username, String password) {
-        User loginUser = new User(username, password);
-
-
+//        model.user.User loginUser = new model.user.User(username, password);
+//
+//
 //        Configuration configuration = new Configuration();
 //
 //        // do stuff to configuration
@@ -95,14 +95,14 @@ public class LoginRealm extends SimpleSecurityRealmBase {
 //        Session session = configuration.buildSessionFactory(serviceRegistryBuilder.getBootstrapServiceRegistry()).getCurrentSession();
 //        org.hibernate.Transaction tr = session.beginTransaction();
 //;
-//        List<User> users=session.createQuery("from User u where u. ").list();
+//        List<model.user.User> users=session.createQuery("SELECT all FROM PUBLIC.USER").list();
 
 //        String strSql ="from  ";
 //        Query query = session.createQuery(strSql);
 //        List lst = query.list();
 //        for(Iterator it=lst.iterator();it.hasNext();){
 //
-//            User emp=(User)it.next();
+//            model.user.User emp=(model.user.User)it.next();
 //            if (emp.equals(loginUser)){
 //                return true;
 //            }
@@ -110,7 +110,22 @@ public class LoginRealm extends SimpleSecurityRealmBase {
 //
 //        tr.commit();
 //        return false;
+//        EmployeeDAO dao = new EmployeeDAO();
+//        EmployeeBean emp = dao.getEmployee(1);
+        System.out.println(getEmployee(1).getEmail() + " " + getEmployee(1).getPassword());
+
         return User.exist(new User(username, password));
+    }
+
+    public User getEmployee(int empId) {
+        Session sess = null;
+        try {
+            sess = HibernateUtil.getSession();
+            return (User) sess.get(User.class, empId);
+        } catch (HibernateException e) {
+            e.printStackTrace();//Later remove this by appropriate logger statement or throw custom exception
+        }
+        return null;
     }
 
     /**
@@ -119,7 +134,7 @@ public class LoginRealm extends SimpleSecurityRealmBase {
      * Implement this method in a subclass to avoid dealing with Principal objects.
      *
      * @param username The name of the user
-     * @param role name of a role to test for membership
+     * @param role     name of a role to test for membership
      * @return true if the user is in the role, false otherwise
      */
     public boolean isUserInRole(String username, String role) {
