@@ -1,4 +1,4 @@
-package control;
+package org.studyroom.control;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * Created with IntelliJ IDEA.
- * model.user.User: Federico F. Favale
+ * org.studyroom.model.user.User: Federico F. Favale
  * Date: 04/04/2014
  * Time: 14:05
  * To change this template use File | Settings | File Templates.

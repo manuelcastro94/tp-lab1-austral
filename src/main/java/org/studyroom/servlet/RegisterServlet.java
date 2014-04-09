@@ -1,7 +1,7 @@
-package servlet;
+package org.studyroom.servlet;
 
-import control.HibernateUtil;
-import model.user.User;
+import org.studyroom.control.HibernateUtil;
+import org.studyroom.model.user.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
- * model.user.User: Federico F. Favale
+ * org.studyroom.model.user.User: Federico F. Favale
  * Date: 28/03/2014
  * Time: 21:44
  * To change this template use File | Settings | File Templates.

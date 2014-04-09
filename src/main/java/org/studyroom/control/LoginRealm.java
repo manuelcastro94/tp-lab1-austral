@@ -1,8 +1,8 @@
-package control;
+package org.studyroom.control;
 
 
-import model.Constants;
-import model.user.User;
+import org.studyroom.model.Constants;
+import org.studyroom.model.user.User;
 import org.hibernate.Session;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 

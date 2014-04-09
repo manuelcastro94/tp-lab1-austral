@@ -15,7 +15,7 @@
             <!--<description>Validate config file if set to true</description>-->
         </init-param>
     </filter>
-    <!-- map all requests to the SecurityFilter, servlet what it does with configuration settings -->
+    <!-- map all requests to the SecurityFilter, org.studyroom.servlet what it does with configuration settings -->
     <filter-mapping>
         <filter-name>Security Filter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>servlet.RegisterServlet</servlet-class>
+        <servlet-class>org.studyroom.servlet.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

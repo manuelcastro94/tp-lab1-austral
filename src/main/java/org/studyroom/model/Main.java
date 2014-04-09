@@ -1,11 +1,11 @@
-package model;
+package org.studyroom.model;
 
-import control.HibernateUtil;
+import org.studyroom.control.HibernateUtil;
 import org.hibernate.Session;
 
 /**
  * Created with IntelliJ IDEA.
- * model.user.User: Federico F. Favale
+ * org.studyroom.model.user.User: Federico F. Favale
  * Date: 01/04/2014
  * Time: 15:54
  * To change this template use File | Settings | File Templates.

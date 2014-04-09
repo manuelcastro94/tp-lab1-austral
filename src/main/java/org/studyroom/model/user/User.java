@@ -1,10 +1,10 @@
-package model.user;
+package org.studyroom.model.user;
 
 import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
- * model.user.User: Federico F. Favale
+ * org.studyroom.model.user.User: Federico F. Favale
  * Date: 04/04/2014
  * Time: 13:10
  * To change this template use File | Settings | File Templates.
@@ -80,7 +80,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "model.user.User{" +
+        return "org.studyroom.model.user.User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

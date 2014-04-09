@@ -1,5 +1,5 @@
-package model;/*
- * $Header: /cvsroot/securityfilter/securityfilter/src/example/org/securityfilter/example/model.Constants.java,v 1.5 2004/01/26 10:55:37 maxcooper Exp $
+package org.studyroom.model;/*
+ * $Header: /cvsroot/securityfilter/securityfilter/src/example/org/securityfilter/example/org.studyroom.model.Constants.java,v 1.5 2004/01/26 10:55:37 maxcooper Exp $
  * $Revision: 1.5 $
  * $Date: 2004/01/26 10:55:37 $
  *
@@ -54,7 +54,7 @@ package model;/*
  */
 
 /**
- * model.Constants - constants for the example applications to facilitate testing
+ * org.studyroom.model.Constants - constants for the example applications to facilitate testing
  *
  * @author Max Cooper (max@maxcooper.com)
  * @version $Revision: 1.5 $ $Date: 2004/01/26 10:55:37 $
