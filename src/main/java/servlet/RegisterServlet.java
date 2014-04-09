@@ -1,0 +1,40 @@
+package servlet;
+
+import control.HibernateUtil;
+import model.user.User;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * Created with IntelliJ IDEA.
+ * model.user.User: Federico F. Favale
+ * Date: 28/03/2014
+ * Time: 21:44
+ * To change this template use File | Settings | File Templates.
+ */
+public class RegisterServlet extends HttpServlet {
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        System.out.println("AAAAAAAAAAAAAAA");
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        User newUser = new User("sdf", "xf");
+        session.save(newUser);
+        transaction.commit();
+
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("WWWWWWWWWWWW");
+        super.doGet(req, resp);
+    }
+}

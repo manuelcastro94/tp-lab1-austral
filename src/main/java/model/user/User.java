@@ -1,10 +1,6 @@
 package model.user;
 
-import model.Connection;
-
 import javax.persistence.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,19 +24,19 @@ public class User {
     public User() {
     }
 
-    public static boolean exist(User user) {
-        ResultSet dataBase = Connection.getDataBase();
-        try {
-            while (dataBase.next()) {
-                if (user.equals(new User(dataBase.getString(1), dataBase.getString(2)))) {
-                    return true;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    public static boolean exist(User user) {
+//        ResultSet dataBase = Connection.getDataBase();
+//        try {
+//            while (dataBase.next()) {
+//                if (user.equals(new User(dataBase.getString(1), dataBase.getString(2)))) {
+//                    return true;
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     @Id
     @Column(name = "EMAIL")

@@ -29,7 +29,6 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
         <!-- Use these files for mapping configuration -->
-        <!--<mapping resource="test/Person.hbm.xml"/>-->
-        <!--<mapping resource="model/user/User.hbm.xml"/>-->
+        <mapping resource="User.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -28,9 +28,11 @@
 
     <input type="Submit" value="<%=Constants.LOG_IN%>">
 
-    <%@include file="../loginjsp/registerform.jsp" %>
+    <%--<%@include file="../loginjsp/registerform.jsp" %>--%>
     <%} else {%>
     Welcome <%=request.getRemoteUser()%>
     <%}%>
 </form>
+
+<%@include file="../loginjsp/registerform.jsp" %>
 </html>

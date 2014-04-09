@@ -15,7 +15,7 @@
             <!--<description>Validate config file if set to true</description>-->
         </init-param>
     </filter>
-    <!-- map all requests to the SecurityFilter, control what it does with configuration settings -->
+    <!-- map all requests to the SecurityFilter, servlet what it does with configuration settings -->
     <filter-mapping>
         <filter-name>Security Filter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -31,13 +31,13 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>model.user.RegisterServlet</servlet-name>
-        <servlet-class>model.user.RegisterServlet</servlet-class>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>servlet.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>model.user.RegisterServlet</servlet-name>
-        <url-pattern>/model.user.RegisterServlet</url-pattern>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
     <!-- SecurityFilter works with custom error pages -->

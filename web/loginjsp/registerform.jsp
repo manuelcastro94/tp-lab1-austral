@@ -9,8 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<form id="<%=Constants.REGISTER_FORM_ID%>" action="RegisterServlet" method="POST">
-    <input type="Submit" value="<%=Constants.REGISTER%>">
+<form id="<%=Constants.REGISTER_FORM_ID%>" action="/studyroom/register" method="POST">
+<input type="Submit" value="<%=Constants.REGISTER%>">
 </form>
 </body>
 </html>

@@ -25,7 +25,7 @@
         </form-login-config>
     </login-config>
 
-    <realm className="model.LoginRealm">
+    <realm className="control.LoginRealm">
         <realm-param name="exampleProperty" value="it works!"/>
     </realm>
 
