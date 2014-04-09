@@ -1,11 +1,10 @@
 package model;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 
 /**
@@ -16,25 +15,28 @@ import org.hibernate.service.ServiceRegistry;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateUtil {
-    public static Session getSession() {
-        Session sess = null;
-        Configuration config = new Configuration().configure();
-        ServiceRegistry serviceRegistry = null;
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
-        builder.applySettings(config.getProperties());
-        serviceRegistry = builder.build();
-        SessionFactory sFec = config.buildSessionFactory(serviceRegistry);
-        sess = sFec.openSession();
-        return sess;
-    }
 
-    public static void closeSession(Session sess) {
-        if (sess != null) {
-            try {
-                sess.close();
-            } catch (HibernateException e) {
-                //do nothing just silence this exception
-            }
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+
+    private static SessionFactory buildSessionFactory() {
+        try {
+            // Create the SessionFactory from hibernate.cfg.xml
+            Configuration conf = new Configuration().configure();
+            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
+            return conf.buildSessionFactory(serviceRegistry);
+        } catch (Throwable ex) {
+            // Make sure you log the exception, as it might be swallowed
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
         }
     }
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public static Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
 }

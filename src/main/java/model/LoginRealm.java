@@ -54,7 +54,6 @@ package model;/*
 */
 
 import model.user.User;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 
@@ -112,21 +111,16 @@ public class LoginRealm extends SimpleSecurityRealmBase {
 //        return false;
 //        EmployeeDAO dao = new EmployeeDAO();
 //        EmployeeBean emp = dao.getEmployee(1);
-        System.out.println(getEmployee(1).getEmail() + " " + getEmployee(1).getPassword());
+//        System.out.println(getEmployee(1).getEmail() + " " + getEmployee(1).getPassword());
 
-        return User.exist(new User(username, password));
+        Session session = HibernateUtil.getSession();
+
+        session.beginTransaction();
+        User o = (User) session.get(User.class, username);
+
+        return o.getPassword().equals(password);
     }
 
-    public User getEmployee(int empId) {
-        Session sess = null;
-        try {
-            sess = HibernateUtil.getSession();
-            return (User) sess.get(User.class, empId);
-        } catch (HibernateException e) {
-            e.printStackTrace();//Later remove this by appropriate logger statement or throw custom exception
-        }
-        return null;
-    }
 
     /**
      * Test for role membership.

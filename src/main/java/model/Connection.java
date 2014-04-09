@@ -2,6 +2,7 @@ package model;
 
 import model.user.User;
 
+import javax.swing.*;
 import java.sql.*;
 
 /**
@@ -13,13 +14,12 @@ import java.sql.*;
  */
 public class Connection {
 
-    private Connection() {
-    }
+    private java.sql.Connection connection;
 
     public static ResultSet getDataBase() {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
-            System.out.println(Thread.currentThread().getContextClassLoader().getResource("").toString().replaceAll("out/artifacts/Lab1_war_exploded/WEB-INF/classes/","lib/studyroom").substring(6));
+            System.out.println(Thread.currentThread().getContextClassLoader().getResource("").toString().replaceAll("out/artifacts/Lab1_war_exploded/WEB-INF/classes/", "lib/studyroom").substring(6));
             java.sql.Connection con = DriverManager.getConnection("jdbc:hsqldb:" + Thread.currentThread().getContextClassLoader().getResource("").toString().replaceAll("out/artifacts/Lab1_war_exploded/WEB-INF/classes/", "lib/studyroom").substring(6));
             PreparedStatement ps = con.prepareStatement("SELECT * FROM PUBLIC.USER");
             ResultSet rs = ps.executeQuery();
@@ -55,6 +55,21 @@ public class Connection {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public java.sql.Connection getConnection() {
+        return connection;
+    }
+
+    public void establishConnection() {
+        try {
+            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            connection = DriverManager.getConnection(Thread.currentThread().getContextClassLoader().getResource("").toString().replaceAll("out/artifacts/Lab1_war_exploded/WEB-INF/classes/", "lib/studyroom").substring(6), "", "");
+        } catch (Exception e) {
+            System.out.println("Connection failed");
+            JOptionPane.showMessageDialog(null, "Connection failed");
             e.printStackTrace();
         }
     }

@@ -16,6 +16,7 @@ import java.sql.SQLException;
 @Entity
 @Table(name = "USER", schema = "PUBLIC", catalog = "PUBLIC")
 public class User {
+
     private String email;
     private String password;
 
