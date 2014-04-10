@@ -18,17 +18,13 @@
            name="<%=Constants.LOGIN_USERNAME_FIELD%>"
            value="<%=Constants.VALID_USERNAME%>"
             >
-
     Password:
     <input type="password"
            name="<%=Constants.LOGIN_PASSWORD_FIELD%>"
            value="<%=Constants.VALID_PASSWORD%>"
             >
-
-
     <input type="Submit" value="<%=Constants.LOG_IN%>">
-
-    <%--<%@include file="../loginjsp/registerform.jsp" %>--%>
+    <input type="button" value="<%=Constants.LOG_IN%>">
     <%} else {%>
     Welcome <%=request.getRemoteUser()%>
     <%}%>
