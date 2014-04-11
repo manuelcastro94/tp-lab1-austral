@@ -30,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
         UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(),
                 new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD)));
         resp.sendRedirect("/studyroom/index.jsp");
+
     }
 
 
