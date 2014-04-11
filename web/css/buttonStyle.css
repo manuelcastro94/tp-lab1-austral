@@ -51,7 +51,6 @@ input[value = "Sign In"]:active {
 }
 
 .singinButoon > * {
-    background-color: black;
     position: absolute;
     right: 30px !important;
     top: 28px;
