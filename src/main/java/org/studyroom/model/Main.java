@@ -1,8 +1,5 @@
 package org.studyroom.model;
 
-import org.studyroom.control.HibernateUtil;
-import org.hibernate.Session;
-
 /**
  * Created with IntelliJ IDEA.
  * org.studyroom.model.user.User: Federico F. Favale
@@ -13,11 +10,11 @@ import org.hibernate.Session;
 public class Main {
 
     public static void main(final String[] args) throws Exception {
-        final Session session = HibernateUtil.getSession();
-        try {
-            //
-        } finally {
-            session.close();
-        }
+//        final Session session = HibernateUtil.getSession();
+//        try {
+//            //
+//        } finally {
+//            session.close();
+//        }
     }
 }

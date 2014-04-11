@@ -27,7 +27,9 @@
     Welcome <%=request.getRemoteUser()%>
     <%}%>
 </form>
+<%if (request.getRemoteUser() == null) {%>
 <form class="singinButoon" action="<%=response.encodeURL("/studyroom/register/registerpage.jsp")%>">
     <input type="Submit" value="<%=Constants.REGISTER%>">
+    <%}%>
 </form>
 </html>

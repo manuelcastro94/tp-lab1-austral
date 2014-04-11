@@ -1,8 +1,8 @@
 package org.studyroom.servlet;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.studyroom.control.HibernateUtil;
+import org.studyroom.control.dao.UserDAO;
+import org.studyroom.model.Constants;
 import org.studyroom.model.user.User;
 
 import javax.servlet.ServletException;
@@ -22,19 +22,18 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        System.out.println("AAAAAAAAAAAAAAA");
-        Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
-        User newUser = new User("khb", "xf");
-        session.save(newUser);
-        transaction.commit();
-
+//        Session session = HibernateUtil.getGuestSession();
+//        Transaction transaction = session.beginTransaction();
+//        User newUser = new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD));
+//        session.save(newUser);
+//        transaction.commit();
+        UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(),
+                new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD)));
     }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("WWWWWWWWWWWW");
         super.doGet(req, resp);
     }
 }

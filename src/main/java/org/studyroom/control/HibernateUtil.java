@@ -16,27 +16,50 @@ import org.hibernate.cfg.Configuration;
  */
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static HibernateUtil ourInstance = new HibernateUtil();
+    private final SessionFactory sessionFactory;
+    private final Session guestSession;
 
-    private static SessionFactory buildSessionFactory() {
+    private HibernateUtil() {
         try {
-            // Create the SessionFactory from hibernate.cfg.xml
-            Configuration conf = new Configuration().configure();
-            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
-            return conf.buildSessionFactory(serviceRegistry);
+            Configuration configuration = new Configuration();
+            configuration.configure();
+            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            guestSession = sessionFactory.openSession();
         } catch (Throwable ex) {
-            // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
     public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+        return ourInstance.sessionFactory;
     }
 
-    public static Session getSession() {
-        return sessionFactory.getCurrentSession();
+    public static Session getGuestSession() {
+        return ourInstance.guestSession;
     }
+
+//    private static SessionFactory buildSessionFactory() {
+//        try {
+//            // Create the SessionFactory from hibernate.cfg.xml
+//            Configuration conf = new Configuration().configure();
+//            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
+//            return conf.buildSessionFactory(serviceRegistry);
+//        } catch (Throwable ex) {
+//            // Make sure you log the exception, as it might be swallowed
+//            System.err.println("Initial SessionFactory creation failed." + ex);
+//            throw new ExceptionInInitializerError(ex);
+//        }
+//    }
+//
+//    public static SessionFactory getSessionFactory() {
+//        return sessionFactory;
+//    }
+//
+//    public static Session getSession() {
+//        return sessionFactory.getCurrentSession();
+//    }
 
 }
