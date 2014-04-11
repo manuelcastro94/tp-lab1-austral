@@ -6,7 +6,7 @@
 <hibernate-mapping package="org.hibernate">
     <class name="org.studyroom.model.user.User" table="User" schema="PUBLIC" catalog="PUBLIC">
         <id name="email" column="email">
-            <generator class="increment"/>
+            <generator class="org.studyroom.model.StringSequenceGenerator"/>
         </id>
         <property name="password" column="password"/>
     </class>

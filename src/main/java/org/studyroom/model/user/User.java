@@ -1,5 +1,8 @@
 package org.studyroom.model.user;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
 
 /**
@@ -39,6 +42,8 @@ public class User {
 //    }
 
     @Id
+    @GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "org.studyroom.model.StringSequenceGenerator", parameters = {@Parameter(name = "sequence", value = "MY_SEQUENCE_NAME")})
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "STRING_SEQUENCE_GENERATOR")
     @Column(name = "EMAIL")
     public String getEmail() {
         return email;

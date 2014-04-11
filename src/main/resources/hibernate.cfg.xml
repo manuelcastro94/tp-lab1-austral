@@ -10,6 +10,7 @@
         <property name="hibernate.connection.url">jdbc:hsqldb:file:c:\studyroomdb\studyroom</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -27,7 +28,7 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+        <!--<property name="hbm2ddl.auto">update</property>-->
         <!-- Use these files for mapping configuration -->
         <mapping resource="User.hbm.xml"/>
     </session-factory>

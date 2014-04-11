@@ -72,6 +72,8 @@ public interface Constants {
     public static final String LOGIN_FORM_ACTION = "j_security_check";
     public static final String LOGIN_USERNAME_FIELD = "j_username";
     public static final String LOGIN_PASSWORD_FIELD = "j_password";
+    public static final String REGISTER_USERNAME_FIELD = "r_username";
+    public static final String REGISTER_PASSWORD_FIELD = "r_password";
     public static final String LOG_IN = "Log In";
     public static final String REGISTER = "Sign In";
 

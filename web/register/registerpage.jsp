@@ -13,6 +13,12 @@
 </head>
 <body>
 <form id="<%=Constants.REGISTER_FORM_ID%>" action="/studyroom/register" method="POST">
+    Email:
+    <input type="text"
+           name="<%=Constants.REGISTER_USERNAME_FIELD%>">
+    Password:
+    <input type="password"
+           name="<%=Constants.REGISTER_PASSWORD_FIELD%>">
     <input type="Submit" value="<%=Constants.REGISTER%>">
 </form>
 </body>

@@ -1,9 +1,9 @@
 package org.studyroom.servlet;
 
-import org.studyroom.control.HibernateUtil;
-import org.studyroom.model.user.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.studyroom.control.HibernateUtil;
+import org.studyroom.model.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +25,7 @@ public class RegisterServlet extends HttpServlet {
         System.out.println("AAAAAAAAAAAAAAA");
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        User newUser = new User("sdf", "xf");
+        User newUser = new User("khb", "xf");
         session.save(newUser);
         transaction.commit();
 

@@ -1,3 +1,4 @@
+<%@ page import="org.studyroom.model.Constants" %>
 <%--
   Created by IntelliJ IDEA.
   org.studyroom.model.user.User: Federico
@@ -26,6 +27,7 @@
     Welcome <%=request.getRemoteUser()%>
     <%}%>
 </form>
-
-<%@include file="../loginjsp/registerform.jsp" %>
+<form class="singinButoon" action="<%=response.encodeURL("/studyroom/register/registerpage.jsp")%>">
+    <input type="Submit" value="<%=Constants.REGISTER%>">
+</form>
 </html>
