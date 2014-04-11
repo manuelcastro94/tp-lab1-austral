@@ -6,11 +6,12 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
         <property name="hibernate.connection.url">jdbc:hsqldb:file:c:\studyroomdb\studyroom</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
-        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <!--<property name="hibernate.hbm2ddl.auto">validate</property>-->
+
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -28,8 +29,8 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <!--<property name="hbm2ddl.auto">update</property>-->
-        <!-- Use these files for mapping configuration -->
-        <mapping resource="User.hbm.xml"/>
+        <property name="hbm2ddl.auto">create-drop</property>
+
+        <mapping class="org.studyroom.model.user.User"></mapping>
     </session-factory>
 </hibernate-configuration>

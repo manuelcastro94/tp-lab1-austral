@@ -1,8 +1,5 @@
 package org.studyroom.model.user;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-
 import javax.persistence.*;
 
 /**
@@ -15,8 +12,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USER", schema = "PUBLIC", catalog = "PUBLIC")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false)
+    private long id;
+    @Basic
+    @Column(name = "EMAIL")
     private String email;
+    @Basic
+    @Column(name = "PASSWORD")
     private String password;
 
     public User(String email, String password) {
@@ -27,24 +31,10 @@ public class User {
     public User() {
     }
 
-//    public static boolean exist(User user) {
-//        ResultSet dataBase = Connection.getDataBase();
-//        try {
-//            while (dataBase.next()) {
-//                if (user.equals(new User(dataBase.getString(1), dataBase.getString(2)))) {
-//                    return true;
-//                }
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return false;
-//    }
+    public long getId() {
+        return id;
+    }
 
-    @Id
-    @GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "org.studyroom.model.StringSequenceGenerator", parameters = {@Parameter(name = "sequence", value = "MY_SEQUENCE_NAME")})
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "STRING_SEQUENCE_GENERATOR")
-    @Column(name = "EMAIL")
     public String getEmail() {
         return email;
     }
@@ -53,8 +43,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "PASSWORD")
     public String getPassword() {
         return password;
     }
