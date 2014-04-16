@@ -36,4 +36,6 @@ public class UserDAO extends DataAO {
         session.save(user);
         super.endTransaction(session);
     }
+
+
 }

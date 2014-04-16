@@ -1,6 +1,10 @@
 package org.studyroom.model.user;
 
+import org.studyroom.model.answer.Answer;
+import org.studyroom.model.question.Question;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,6 +26,12 @@ public class User {
     @Basic
     @Column(name = "PASSWORD")
     private String password;
+    @OneToMany
+    @JoinColumn(name = "QUESTIONS")
+    private List<Question> questions;
+    @OneToMany
+    @JoinColumn(name = "ANSWERS")
+    private List<Answer> answers;
 
     public User(String email, String password) {
         this.email = email;
@@ -31,25 +41,14 @@ public class User {
     public User() {
     }
 
-    public long getId() {
-        return id;
+    public void ask(Question question) {
+        questions.add(question);
     }
 
-    public String getEmail() {
-        return email;
+    public void answer(Question question, Answer answer) {
+        question.response(answer);
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -77,6 +76,44 @@ public class User {
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    /*getters and setters*/
+
+    public long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 
 }

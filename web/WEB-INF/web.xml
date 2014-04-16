@@ -15,7 +15,7 @@
             <!--<description>Validate config file if set to true</description>-->
         </init-param>
     </filter>
-    <!-- map all requests to the SecurityFilter, org.studyroom.servlet what it does with configuration settings -->
+    <!-- map all requests to the SecurityFilter, org.studyroom.control.servlet what it does with configuration settings -->
     <filter-mapping>
         <filter-name>Security Filter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -23,7 +23,7 @@
 
     <!-- make the session time-out after one minute -->
     <session-config>
-        <session-timeout>1</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 
     <welcome-file-list>
@@ -32,12 +32,22 @@
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>org.studyroom.servlet.RegisterServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostQuestionServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.PostQuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PostQuestionServlet</servlet-name>
+        <url-pattern>/postQuestion</url-pattern>
     </servlet-mapping>
 
     <!-- SecurityFilter works with custom error pages -->

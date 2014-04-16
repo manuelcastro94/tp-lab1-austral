@@ -1,4 +1,4 @@
-package org.studyroom.servlet;
+package org.studyroom.control.servlet;
 
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.UserDAO;
@@ -22,19 +22,9 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-//        Session session = HibernateUtil.getGuestSession();
-//        Transaction transaction = session.beginTransaction();
-//        User newUser = new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD));
-//        session.save(newUser);
-//        transaction.commit();
         UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(),
                 new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD)));
         resp.sendRedirect("/studyroom/index.jsp");
     }
 
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
 }

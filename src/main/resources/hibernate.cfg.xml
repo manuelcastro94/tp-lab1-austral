@@ -31,6 +31,10 @@
         <!-- Drop and re-create the database schema on startup -->
         <!--<property name="hbm2ddl.auto">create-drop</property>-->
         <property name="hbm2ddl.auto">update</property>
+
+
         <mapping class="org.studyroom.model.user.User"></mapping>
+        <mapping class="org.studyroom.model.question.Question"></mapping>
+        <mapping class="org.studyroom.model.answer.Answer"></mapping>
     </session-factory>
 </hibernate-configuration>
