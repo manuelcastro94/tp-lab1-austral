@@ -50,6 +50,16 @@
         <url-pattern>/postQuestion</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoadQuestionServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.LoadQuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PostQuestionServlet</servlet-name>
+        <url-pattern>/postQuestion</url-pattern>
+    </servlet-mapping>
+
     <!-- SecurityFilter works with custom error pages -->
     <!--<error-page>-->
     <!--<error-code>403</error-code>-->

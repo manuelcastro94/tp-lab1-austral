@@ -1,5 +1,8 @@
 package org.studyroom.control.servlet;
 
+import org.studyroom.control.HibernateUtil;
+import org.studyroom.control.dao.QuestionDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +16,11 @@ import java.io.IOException;
  * Time: 10:45
  * To change this template use File | Settings | File Templates.
  */
-public class LoadQuestion extends HttpServlet {
+public class LoadQuestionServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
+        System.out.println(QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession()));
 
     }
 }
