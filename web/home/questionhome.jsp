@@ -12,7 +12,15 @@
     <title></title>
 </head>
 <body>
+<form id="sd" action="/studyroom/loadQuestion" method="POST">
+
+    <input type="Submit" value="ADAdasd">
+</form>
+<c:out value="asdfasd ${requestScope.questions}"/>
 <c:out value="Usar la imaginacion y creer que aca se ven preguntas"/>
-<%@include file="/secured/answerform.jsp" %>
+<c:forEach var="item" items="${requestScope.questions}">
+Item <c:out value="${item}"/><p>
+    </c:forEach>
+    <%@include file="/secured/answerform.jsp" %>
 </body>
 </html>

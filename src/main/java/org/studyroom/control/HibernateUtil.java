@@ -41,25 +41,4 @@ public class HibernateUtil {
         return ourInstance.guestSession;
     }
 
-//    private static SessionFactory buildSessionFactory() {
-//        try {
-//            // Create the SessionFactory from hibernate.cfg.xml
-//            Configuration conf = new Configuration().configure();
-//            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
-//            return conf.buildSessionFactory(serviceRegistry);
-//        } catch (Throwable ex) {
-//            // Make sure you log the exception, as it might be swallowed
-//            System.err.println("Initial SessionFactory creation failed." + ex);
-//            throw new ExceptionInInitializerError(ex);
-//        }
-//    }
-//
-//    public static SessionFactory getSessionFactory() {
-//        return sessionFactory;
-//    }
-//
-//    public static Session getSession() {
-//        return sessionFactory.getCurrentSession();
-//    }
-
 }

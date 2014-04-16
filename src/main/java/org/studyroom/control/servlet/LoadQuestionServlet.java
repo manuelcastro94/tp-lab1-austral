@@ -3,6 +3,8 @@ package org.studyroom.control.servlet;
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.QuestionDao;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,9 @@ public class LoadQuestionServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        System.out.println(QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession()));
-
+        req.setAttribute("questions", QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession()));
+        ServletContext context = getServletContext();
+        RequestDispatcher rd = context.getRequestDispatcher("/index.jsp");
+        rd.forward(req, resp);
     }
 }

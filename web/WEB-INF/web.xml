@@ -56,8 +56,8 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>PostQuestionServlet</servlet-name>
-        <url-pattern>/postQuestion</url-pattern>
+        <servlet-name>LoadQuestionServlet</servlet-name>
+        <url-pattern>/loadQuestion</url-pattern>
     </servlet-mapping>
 
     <!-- SecurityFilter works with custom error pages -->

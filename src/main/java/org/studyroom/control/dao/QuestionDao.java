@@ -1,6 +1,5 @@
 package org.studyroom.control.dao;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.studyroom.model.question.Question;
 
@@ -31,9 +30,6 @@ public class QuestionDao extends DataAO {
     }
 
     public List<Question> getQuestions(Session session) {
-        super.beginTransaction(session);
-        Query query = session.createQuery("SELECT * FROM QUESTIONS");
-        super.endTransaction(session);
-        return (List<Question>) query.uniqueResult();
+        return (List<Question>) session.createCriteria(Question.class).list();
     }
 }
