@@ -51,7 +51,7 @@ input[value = "Sign In"]:active {
 }
 
 .singinButoon > * {
-    position: absolute;
-    right: 30px !important;
-    top: 28px;
+    position: absolute!important;
+    right: 30px!important;
+    top: 28px!important;
 }
