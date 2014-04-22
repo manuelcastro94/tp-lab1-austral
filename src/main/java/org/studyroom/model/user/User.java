@@ -72,7 +72,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "org.studyroom.model.user.User{" +
+        return "User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

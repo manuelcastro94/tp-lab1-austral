@@ -31,5 +31,7 @@ public class LoginRealm extends SimpleSecurityRealmBase {
         User user = UserDAO.getInstance().getUser(session, username);
         return user.getPassword().equals(password);
     }
+
+
 }
 

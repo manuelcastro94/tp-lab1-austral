@@ -12,11 +12,13 @@
     <title>Question Form</title>
 </head>
 <body>
+<%if (request.getRemoteUser() != null) {%>
 <form id="<%=Constants.QUESTION_FORM%>" action="/studyroom/postQuestion" method="POST">
     Ask:
     <input type="text"
            name="<%=Constants.QUESTION_FIELD%>">
-    <input type="Submit" value="<%=Constants.REGISTER%>">
+    <input type="Submit" value="Post">
 </form>
+<%}%>
 </body>
 </html>

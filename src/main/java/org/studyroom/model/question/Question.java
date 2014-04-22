@@ -42,7 +42,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return question != null ? question : "";
+        return question != null ? user + " " + question : "";
     }
 
     public void response(Answer answer) {

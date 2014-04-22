@@ -29,4 +29,9 @@ public class PostQuestionServlet extends HttpServlet {
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
         resp.sendRedirect("/studyroom/index.jsp");
     }
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+//        super.doGet(req,resp);
+    }
 }
