@@ -29,4 +29,6 @@ public interface Constants {
     public static final String QUESTION_FIELD = "questionField";
     public static final String ANSWER_FIELD = "answerField";
     public static final String ANSWER_FORM = "questionField";
+    public static final String QUESTION_ID = "questionIdField";
+    public static final String QUESTION_ID_VALUE = "questionIdValue";
 }

@@ -27,7 +27,8 @@ public class PostAnswerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        Answer answer = new Answer(QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), "¿Como se configura Hibernate?"), req.getParameter(Constants.ANSWER_FIELD), user);
+        Answer answer = new Answer(QuestionDao.getInstance().getQuestionById(HibernateUtil.getGuestSession(), Long.parseLong(req.getParameter(Constants.QUESTION_ID))),
+                req.getParameter(Constants.ANSWER_FIELD), user);
         AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         resp.sendRedirect("/studyroom/index.jsp");
     }

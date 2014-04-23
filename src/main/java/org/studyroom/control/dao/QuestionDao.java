@@ -41,4 +41,12 @@ public class QuestionDao extends DataAO {
         super.endTransaction(session);
         return (Question) query.uniqueResult();
     }
+
+    public Question getQuestionById(Session session, long id) {
+        super.beginTransaction(session);
+        Query query = session.createQuery("select question from Question question where question.id= :yourid");
+        query.setParameter("yourid", id);
+        super.endTransaction(session);
+        return (Question) query.uniqueResult();
+    }
 }

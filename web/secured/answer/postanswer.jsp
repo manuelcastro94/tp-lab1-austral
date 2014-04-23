@@ -18,6 +18,9 @@
     <input type="text"
            name="<%=Constants.ANSWER_FIELD%>">
     <input type="Submit" value="ANSWER">
+    <%----%>
+    <%--<input name="<%=Constants.QUESTION_ID%>"--%>
+    <%--value="<%=Constants.QUESTION_ID_VALUE%>" />--%>
 </form>
 <%}%>
 </body>

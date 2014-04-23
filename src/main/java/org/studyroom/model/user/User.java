@@ -27,10 +27,10 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
     @OneToMany
-    @JoinColumn(name = "QUESTIONS")
+    @JoinColumn(name = "QUESTION")
     private List<Question> questions;
     @OneToMany
-    @JoinColumn(name = "ANSWERS")
+    @JoinColumn(name = "ANSWER")
     private List<Answer> answers;
 
     public User(String email, String password) {

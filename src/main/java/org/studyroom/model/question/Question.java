@@ -4,6 +4,7 @@ import org.studyroom.model.answer.Answer;
 import org.studyroom.model.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,14 +20,13 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "QUESTION_ID", unique = true, nullable = false)
     private long id;
     @Basic
     @Column(name = "QUESTION")
     private String question;
-    @OneToMany
-    @Column(name = "ANSWERS")
-    private List<Answer> answers;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    private List<Answer> answers = new ArrayList<Answer>();
     @ManyToOne
     @JoinColumn(name = "USER")
     private User user;
@@ -73,5 +73,9 @@ public class Question {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public long getId() {
+        return id;
     }
 }

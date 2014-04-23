@@ -23,8 +23,8 @@ public class Answer {
     @Basic
     @Column(name = "ANSWER")
     private String answer;
-    @ManyToOne
-    @JoinColumn(name = "QUESTION")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "QUESTION_ID", nullable = false)
     private Question question;
     @OneToOne
     @JoinColumn(name = "USER")
