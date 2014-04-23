@@ -14,7 +14,7 @@
 <body>
 <%if (request.getRemoteUser() != null) {%>
 <form id="<%=Constants.ANSWER_FORM%>" action="/studyroom/postAnswer" method="POST">
-    Ask:
+    Answer:
     <input type="text"
            name="<%=Constants.ANSWER_FIELD%>">
     <input type="Submit" value="ANSWER">

@@ -13,12 +13,24 @@
 </head>
 <body>
 <%@include file="/secured/question/postquestion.jsp" %>
-<c:forEach var="item" items="${requestScope.questions}">
-    <div>
-        <c:out value="${item}"/><p>
+<c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
+    <div id="QuestionsDiv">
+        <c:out value="User: ${question.getUser().getEmail()}"/><p>
+        <c:out value="Question: ${question.getQuestion()}"/><p>
+            <%--<c:out value="Answers: ${question.getAnswers()}"/><p>--%>
+        <c:forEach var="answer" items="${question.getAnswers()}" varStatus="pStatus">
 
+        <div id="AnswersDiv">
+            <c:out value="--Answers start--"/><p>
+            <c:out value="By: ${answer.getUser().getEmail()}"/><p>
+            <c:out value="Answer: ${answer}"/><p>
+            <c:out value="--Answers end--"/><p>
+        </div>
+        </c:forEach>
+            <%--<c:out value="question[${pStatus.index}].getUser"/><p>--%>
+            <%--<form:input path="Question[${pStatus.index}].getUser" />--%>
+        <%@include file="/secured/answer/postanswer.jsp" %>
     </div>
 </c:forEach>
-<%@include file="/secured/answerform.jsp" %>
 </body>
 </html>

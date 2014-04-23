@@ -2,10 +2,10 @@ package org.studyroom.control.servlet;
 
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.AnswerDao;
+import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.control.dao.UserDAO;
 import org.studyroom.model.Constants;
 import org.studyroom.model.answer.Answer;
-import org.studyroom.model.question.Question;
 import org.studyroom.model.user.User;
 
 import javax.servlet.ServletException;
@@ -23,11 +23,11 @@ import java.io.IOException;
  */
 public class PostAnswerServlet extends HttpServlet {
 
-    //TODO hacer esto como la gente y evitar object references an unsaved transient instance
+    //TODO hacer esto como la gente
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        Answer answer = new Answer(new Question("dsdfsdfds", new User("fede", "fede")), req.getParameter(Constants.ANSWER_FIELD), user);
+        Answer answer = new Answer(QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), "¿Como se configura Hibernate?"), req.getParameter(Constants.ANSWER_FIELD), user);
         AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         resp.sendRedirect("/studyroom/index.jsp");
     }
