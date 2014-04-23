@@ -1,17 +1,18 @@
-<link rel="stylesheet" type="text/css" href="css/indexStyle.css" media="screen"/>
+<%--
+  Created by IntelliJ IDEA.
+  User: Federico
+  Date: 22/04/2014
+  Time: 17:30
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title><%=Constants.HOME_TITLE%>
-    </title>
-    <%@include file="loginjsp/contextualloginform.jsp" %>
+    <title></title>
 </head>
 <body>
-<h1><%=Constants.HOME_TITLE%>
-</h1>
-
-<%@include file="home/questionhome.jsp" %>
-
-
+<form id="sd" action="/studyroom/loadQuestion" method="POST">
+    <input type="Submit" value="Entrar">
+</form>
 </body>
 </html>

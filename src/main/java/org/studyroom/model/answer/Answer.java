@@ -30,8 +30,10 @@ public class Answer {
     @JoinColumn(name = "USER")
     private User user;
 
-    public Answer(String answer) {
+    public Answer(Question question, String answer, User user) {
+        this.question = question;
         this.answer = answer;
+        this.user = user;
     }
 
     public Answer() {

@@ -27,4 +27,6 @@ public interface Constants {
     public static final String POST = "post";
     public static final String QUESTION_FORM = "questionForm";
     public static final String QUESTION_FIELD = "questionField";
+    public static final String ANSWER_FIELD = "answerField";
+    public static final String ANSWER_FORM = "questionField";
 }

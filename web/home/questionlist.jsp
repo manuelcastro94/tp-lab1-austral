@@ -12,13 +12,11 @@
     <title></title>
 </head>
 <body>
-<%@include file="/secured/question/question.jsp" %>
-<form id="sd" action="/studyroom/loadQuestion" method="POST">
-    <input type="Submit" value="ADAdasd">
-</form>
+<%@include file="/secured/question/postquestion.jsp" %>
 <c:forEach var="item" items="${requestScope.questions}">
     <div>
         <c:out value="${item}"/><p>
+
     </div>
 </c:forEach>
 <%@include file="/secured/answerform.jsp" %>

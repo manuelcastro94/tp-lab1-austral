@@ -57,8 +57,29 @@
 
     <servlet-mapping>
         <servlet-name>LoadQuestionServlet</servlet-name>
-        <url-pattern>/loadQuestion</url-pattern>
+        <url-pattern>/index.jsp</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoadAnswerServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.LoadAnswerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoadAnswerServlet</servlet-name>
+        <url-pattern>/loadAnswer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostAnswerServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.PostAnswerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PostAnswerServlet</servlet-name>
+        <url-pattern>/postAnswer</url-pattern>
+    </servlet-mapping>
+
 
     <!-- SecurityFilter works with custom error pages -->
     <!--<error-page>-->
