@@ -12,17 +12,50 @@
 <head>
     <title>Question Form</title>
 </head>
-
 <body>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>MooEditable basic example</title>
+
+<style type="text/css">
+    body{
+        font-family: sans-serif;
+        font-size: .9em;
+    }
+    #textarea-1{
+        width: 700px;
+        height: 200px;
+        padding: 10px;
+        border: 2px solid #ddd;
+    }
+</style>
+
+<link rel="stylesheet" type="text/css" href="editor/Assets/MooEditable/MooEditable.css">
+<script type="text/javascript" src="editor/Assets/assets/mootools.js"></script>
+<script type="text/javascript" src="editor/Source/MooEditable/MooEditable.js"></script>
+
+<script type="text/javascript">
+    window.addEvent('domready', function(){
+        $('textarea-1').mooEditable();
+
+        // Post submit
+        $(<%=Constants.QUESTION_FORM%>).addEvent('submit', function(e){
+            alert($('textarea-1').value);
+            return true;
+        });
+    });
+</script>
 <%if (request.getRemoteUser() != null) {%>
 <form id="<%=Constants.QUESTION_FORM%>" action="/studyroom/postQuestion" method="POST">
 
-    Ask:
-    <input type= "text"
-           name="<%=Constants.QUESTION_FIELD%>">
-    <input type="Submit" value="Post">
+    <label for="textarea-1">Textarea 1</label>
+    <textarea id="textarea-1" name="editable1">
+        &lt;p&gt;&lt;strong&gt;This&lt;/strong&gt; is cool!&lt;/p&gt;
+    </textarea>
+
+    <input type="submit">
+    <%--<input type="Submit" value="Post">--%>
 </form>
-<textarea name="comment" form="<%=Constants.QUESTION_FORM%>">Enter text here...</textarea>
+<%--<textarea name="comment" form="<%=Constants.QUESTION_FORM%>">Enter text here...</textarea>--%>
 <%}%>
 </body>
 </html>
