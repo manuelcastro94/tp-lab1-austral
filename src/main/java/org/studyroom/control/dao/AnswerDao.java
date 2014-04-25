@@ -24,6 +24,10 @@ public class AnswerDao extends DataAO {
         return ourInstance;
     }
 
+    public List<Answer> getAnswers(Session session) {
+        return (List<Answer>) session.createCriteria(Answer.class).list();
+    }
+
     public void addAnswer(Session session, Answer answer) {
         super.beginTransaction(session);
         session.save(answer);

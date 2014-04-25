@@ -13,11 +13,12 @@
     <title>MooEditable basic example</title>
 
     <style type="text/css">
-        body{
+        body {
             font-family: sans-serif;
             font-size: .9em;
         }
-        #textarea-1{
+
+        #textarea-1 {
             width: 700px;
             height: 200px;
             padding: 10px;
@@ -30,30 +31,32 @@
     <script type="text/javascript" src="editor/Source/MooEditable/MooEditable.js"></script>
 
     <script type="text/javascript">
-        window.addEvent('domready', function(){
+
+        window.addEvent('domready', function () {
             $('textarea-1').mooEditable();
 
             // Post submit
-            $('theForm').addEvent('submit', function(e){
+            $('theForm').addEvent('submit', function (e) {
                 alert($('textarea-1').value);
                 return true;
             });
         });
     </script>
 
+    <%System.out.println();%>
 </head>
 <body>
 
 <h1>MooEditable basic example</h1>
 
-<form id="theForm" method="post" action ="studyroom/postQuestion"/>
+<form id="theForm" method="post" action="studyroom/postQuestion"/>
 
-    <label for="textarea-1">Textarea 1</label>
-    <textarea id="textarea-1" name="editable1">
-        &lt;p&gt;&lt;strong&gt;This&lt;/strong&gt; is cool!&lt;/p&gt;
-    </textarea>
+<label for="textarea-1">Textarea 1</label>
+<textarea id="textarea-1" name="editable1">
+    &lt;p&gt;&lt;strong&gt;This&lt;/strong&gt; is cool!&lt;/p&gt;
+</textarea>
 
-    <input type="submit">
+<input type="submit">
 
 </form>
 

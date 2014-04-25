@@ -30,7 +30,9 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "USER")
     private User user;
-
+//    @ManyToMany
+//    @JoinColumn(name = "TAG")
+//    private ArrayList tag = new ArrayList();
 
     public Question(String question, User user) {
         this.question = question;

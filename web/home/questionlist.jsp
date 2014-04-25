@@ -16,7 +16,8 @@
 <c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
     <div id="QuestionsDiv">
         <c:out value="User: ${question.getUser().getEmail()}"/><p>
-        <c:out value="Question: ${question.getQuestion()}"/><p>
+            <c:out value="Question: ${question.getQuestion()}" escapeXml="false"/>
+            <%--<c:out value="Question: ${question.getQuestion()}"/><p>--%>
         <input name="<%=Constants.QUESTION_ID%>"
                value="<c:out value="${question.getId()}"/>"/>
     <%--<c:out value="Answers: ${question.getAnswers()}"/><p>--%>

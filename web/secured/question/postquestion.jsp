@@ -37,11 +37,7 @@
     window.addEvent('domready', function(){
         $('textarea-1').mooEditable();
 
-        // Post submit
-        $(<%=Constants.QUESTION_FORM%>).addEvent('submit', function(e){
-            alert($('textarea-1').value);
-            return true;
-        });
+
     });
 </script>
 <%if (request.getRemoteUser() != null) {%>
@@ -52,7 +48,7 @@
         &lt;p&gt;&lt;strong&gt;This&lt;/strong&gt; is cool!&lt;/p&gt;
     </textarea>
 
-    <input type="submit">
+    <input type="submit" value="Post">
     <%--<input type="Submit" value="Post">--%>
 </form>
 <%--<textarea name="comment" form="<%=Constants.QUESTION_FORM%>">Enter text here...</textarea>--%>
