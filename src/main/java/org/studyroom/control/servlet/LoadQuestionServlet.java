@@ -1,5 +1,6 @@
 package org.studyroom.control.servlet;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.model.question.Question;
@@ -33,16 +34,13 @@ public class LoadQuestionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        List<Question> questions1 = QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession());
-        for (Question question : questions1) {
-            System.out.println(question.getAnswers());
-        }
-
+        List<Question> questions = QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession());
 //        List<Answer> answers = AnswerDao.getInstance().getAnswers(HibernateUtil.getGuestSession());
-//        List<Question> questions = new ArrayList<Question>();
+//        for (Question question : questions){
 //        for (Answer answer : answers){
-//            if (!questions.contains(answer.getQuestion())){
-//                questions.add(answer.getQuestion());
+//                if (answer.getQuestion().equals(question) && !question.getAnswers().contains(answer)){
+//                    question.response(answer);
+//                }
 //            }
 //        }
 //
@@ -51,10 +49,27 @@ public class LoadQuestionServlet extends HttpServlet {
 //        RequestDispatcher rd = context.getRequestDispatcher("/home/home.jsp");
 //        rd.forward(req, resp);
 
+        // 2. initiate jackson mapper
+        ObjectMapper mapper = new ObjectMapper();
 
-        req.setAttribute("questions", QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession()));
+        // 3. Convert received JSON to Article
+//        Article article = mapper.readValue(json, Article.class);
+
+        // 4. Set response type to JSON
+        resp.setContentType("application/json");
+
+        // 5. Add article to List<Article>
+//        articles.add(article);
+
+        // 6. Send List<Article> as JSON to client
+//        mapper.writeValue(resp.getOutputStream(), questions);
+
+
+        req.setAttribute("questions", questions);
         ServletContext context = getServletContext();
         RequestDispatcher rd = context.getRequestDispatcher("/home/home.jsp");
         rd.forward(req, resp);
+
+
     }
 }

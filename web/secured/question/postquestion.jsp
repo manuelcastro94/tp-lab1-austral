@@ -17,11 +17,12 @@
 <title>MooEditable basic example</title>
 
 <style type="text/css">
-    body{
+    body {
         font-family: sans-serif;
         font-size: .9em;
     }
-    #textarea-1{
+
+    #textarea-1 {
         width: 700px;
         height: 200px;
         padding: 10px;
@@ -34,7 +35,7 @@
 <script type="text/javascript" src="editor/Source/MooEditable/MooEditable.js"></script>
 
 <script type="text/javascript">
-    window.addEvent('domready', function(){
+    window.addEvent('domready', function () {
         $('textarea-1').mooEditable();
 
 
@@ -42,8 +43,6 @@
 </script>
 <%if (request.getRemoteUser() != null) {%>
 <form id="<%=Constants.QUESTION_FORM%>" action="/studyroom/postQuestion" method="POST">
-
-    <label for="textarea-1">Textarea 1</label>
     <textarea id="textarea-1" name="editable1">
         &lt;p&gt;&lt;strong&gt;This&lt;/strong&gt; is cool!&lt;/p&gt;
     </textarea>

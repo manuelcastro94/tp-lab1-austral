@@ -1,6 +1,7 @@
 package org.studyroom.control.servlet;
 
 import org.studyroom.control.HibernateUtil;
+import org.studyroom.control.PostChecker;
 import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.control.dao.UserDAO;
 import org.studyroom.model.question.Question;
@@ -24,7 +25,7 @@ public class PostQuestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        Question question = new Question(req.getParameter("editable1"), user);
+        Question question = new Question(PostChecker.check(req.getParameter("editable1")), user);
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
         resp.sendRedirect("/studyroom/index.jsp");
     }

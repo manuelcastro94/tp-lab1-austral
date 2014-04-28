@@ -18,13 +18,10 @@ public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
     private long id;
-    @Basic
     @Column(name = "ANSWER")
     private String answer;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "QUESTION_ID", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Question question;
     @OneToOne
     @JoinColumn(name = "USER")
@@ -34,6 +31,7 @@ public class Answer {
         this.question = question;
         this.answer = answer;
         this.user = user;
+        question.response(this);
     }
 
     public Answer() {
@@ -69,5 +67,13 @@ public class Answer {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

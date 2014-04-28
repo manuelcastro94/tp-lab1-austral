@@ -18,19 +18,14 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
     private long id;
-    @Basic
-    @Column(name = "EMAIL")
+    @Column
     private String email;
-    @Basic
-    @Column(name = "PASSWORD")
+    @Column
     private String password;
-    @OneToMany
-    @JoinColumn(name = "QUESTION")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Question> questions;
-    @OneToMany
-    @JoinColumn(name = "ANSWER")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Answer> answers;
 
     public User(String email, String password) {
@@ -84,6 +79,10 @@ public class User {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -115,5 +114,4 @@ public class User {
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
-
 }

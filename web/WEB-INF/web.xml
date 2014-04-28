@@ -60,15 +60,15 @@
         <url-pattern>/index.jsp</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>LoadAnswerServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.LoadAnswerServlet</servlet-class>
-    </servlet>
+    <!--<servlet>-->
+    <!--<servlet-name>LoadAnswerServlet</servlet-name>-->
+    <!--<servlet-class>org.studyroom.control.servlet.LoadAnswerServlet</servlet-class>-->
+    <!--</servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>LoadAnswerServlet</servlet-name>
-        <url-pattern>/loadAnswer</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>LoadAnswerServlet</servlet-name>-->
+    <!--<url-pattern>/loadAnswer</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <servlet>
         <servlet-name>PostAnswerServlet</servlet-name>

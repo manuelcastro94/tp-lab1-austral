@@ -20,15 +20,12 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "QUESTION_ID", unique = true, nullable = false)
     private long id;
-    @Basic
     @Column(name = "QUESTION")
     private String question;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Answer> answers = new ArrayList<Answer>();
-    @ManyToOne
-    @JoinColumn(name = "USER")
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 //    @ManyToMany
 //    @JoinColumn(name = "TAG")
@@ -79,5 +76,9 @@ public class Question {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
