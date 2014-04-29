@@ -19,7 +19,7 @@
     <div id="QuestionsDiv">
         <c:out value="User: ${question.getUser().getEmail()}"/><p>
             <c:out value="${question.getQuestion()}" escapeXml="false"/>
-            <%--<c:out value="Question: ${question.getQuestion()}"/><p>--%>
+        <c:out value="Tags: ${question.getTags()}"/><p>
         <input name="<%=Constants.QUESTION_ID%>"
                type="hidden"
                value="<c:out value="${question.getId()}"/>"/>
@@ -39,17 +39,17 @@
             <%--<input name="<%=Constants.QUESTION_ID%>" type="hidden"--%>
             <%--value="<c:out value="${question.getId()}"/>"/>--%>
             <%--<input type="Submit" value="ANSWER">--%>
-            <%--&lt;%&ndash;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;<input name="<%=Constants.QUESTION_ID%>"&ndash;%&gt;--%>
-            <%--&lt;%&ndash;value="<%=Constants.QUESTION_ID_VALUE%>" />&ndash;%&gt;--%>
+            <%--<%----%>
+            <%--<%--<input name="<%=Constants.QUESTION_ID%>"--%>
+            <%--<%--value="<%=Constants.QUESTION_ID_VALUE%>" />--%>
             <%--</form>--%>
             <%--<%}%>--%>
             <%--<jsp:include page="/secured/answer/postanswer.jsp" >--%>
-            <%--&lt;%&ndash;<jsp:param name="<%=Constants.QUESTION_ID_VALUE%>" value="${question.getId()}" />&ndash;%&gt;--%>
+            <%--<%--<jsp:param name="<%=Constants.QUESTION_ID_VALUE%>" value="${question.getId()}" />--%>
             <%--</jsp:include>--%>
-            <%--&lt;%&ndash;<%@include file="/secured/answer/postanswer.jsp" %>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;<c:out value="question[${pStatus.index}].getUser"/><p>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;<form:input path="Question[${pStatus.index}].getUser" />&ndash;%&gt;--%>
+            <%--<%--<%@include file="/secured/answer/postanswer.jsp" %>--%>
+            <%--<%--<c:out value="question[${pStatus.index}].getUser"/><p>--%>
+            <%--<%--<form:input path="Question[${pStatus.index}].getUser" />--%>
     </div>
 </c:forEach>
 </body>

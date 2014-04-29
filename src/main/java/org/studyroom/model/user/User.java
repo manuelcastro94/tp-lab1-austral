@@ -4,6 +4,7 @@ import org.studyroom.model.answer.Answer;
 import org.studyroom.model.question.Question;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -24,9 +25,9 @@ public class User {
     @Column
     private String password;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Question> questions;
+    private List<Question> questions = new LinkedList<Question>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Answer> answers;
+    private List<Answer> answers = new LinkedList<Answer>();
 
     public User(String email, String password) {
         this.email = email;

@@ -36,5 +36,6 @@
         <mapping class="org.studyroom.model.user.User"></mapping>
         <mapping class="org.studyroom.model.question.Question"></mapping>
         <mapping class="org.studyroom.model.answer.Answer"></mapping>
+        <mapping class="org.studyroom.model.tag.Tag"></mapping>
     </session-factory>
 </hibernate-configuration>

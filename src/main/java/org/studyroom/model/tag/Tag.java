@@ -3,6 +3,7 @@ package org.studyroom.model.tag;
 import org.studyroom.model.question.Question;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,13 +18,13 @@ import java.util.List;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tag_id", nullable = false, insertable = true, updatable = true)
     private long id;
-    @Basic
-    @Column(name = "TAG")
+    @Column
     private String tag;
-    @ManyToMany
-    @JoinColumn(name = "QUESTION")
-    private List<Question> questions;
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Question.class, cascade = CascadeType.ALL)
+    @JoinTable(name = "QUESTION_TAG", joinColumns = {@JoinColumn(name = "TAG_ID", referencedColumnName = "tag_id")}, inverseJoinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "question_id")})
+    private List<Question> questions = new LinkedList<Question>();
 
     public Tag(String tag) {
         this.tag = tag;
@@ -32,9 +33,16 @@ public class Tag {
     public Tag() {
     }
 
+    @Override
+    public String toString() {
+        return tag;
+    }
+
     public void addQuestion(Question question) {
         questions.add(question);
     }
+
+    /*getters and setters*/
 
     public List<Question> getQuestions() {
         return questions;

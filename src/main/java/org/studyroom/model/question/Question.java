@@ -1,10 +1,11 @@
 package org.studyroom.model.question;
 
 import org.studyroom.model.answer.Answer;
+import org.studyroom.model.tag.Tag;
 import org.studyroom.model.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,20 +21,26 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "question_id", nullable = false, insertable = true, updatable = true, unique = true)
     private long id;
     @Column(name = "QUESTION")
     private String question;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Answer> answers = new ArrayList<Answer>();
+    private List<Answer> answers = new LinkedList<Answer>();
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
-//    @ManyToMany
-//    @JoinColumn(name = "TAG")
-//    private ArrayList tag = new ArrayList();
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Tag.class, mappedBy = "questions", cascade = CascadeType.ALL)
+    private List<Tag> tags = new LinkedList<Tag>();
 
     public Question(String question, User user) {
         this.question = question;
         this.user = user;
+    }
+
+    public Question(String question, User user, Tag... tags) {
+        this.question = question;
+        this.user = user;
+        addTags(tags);
     }
 
     public Question() {
@@ -46,6 +53,13 @@ public class Question {
 
     public void response(Answer answer) {
         answers.add(answer);
+    }
+
+    public void addTags(Tag... tags) {
+        for (Tag tag : tags) {
+            this.tags.add(tag);
+            tag.addQuestion(this);
+        }
     }
 
     /*getters and setters*/
@@ -80,5 +94,13 @@ public class Question {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tag) {
+        this.tags = tag;
     }
 }
