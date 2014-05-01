@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title><%=Constants.HOME_TITLE%>
     </title>
-    <%@include file="../loginjsp/contextualloginform.jsp" %>
+    <%@include file="../login/contextualloginform.jsp" %>
 </head>
 <body>
 <h1><%=Constants.HOME_TITLE%>

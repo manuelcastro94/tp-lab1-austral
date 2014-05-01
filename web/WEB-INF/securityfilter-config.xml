@@ -19,7 +19,7 @@
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
-            <form-login-page>/loginjsp/contextualloginform.jsp</form-login-page>
+            <form-login-page>/login/contextualloginform.jsp</form-login-page>
             <form-error-page>/index.jsp</form-error-page>
             <form-default-page>/index.jsp</form-default-page>
         </form-login-config>
