@@ -1,5 +1,7 @@
 package org.studyroom.control;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Federico F. Favale
@@ -9,24 +11,22 @@ package org.studyroom.control;
  */
 public class PostChecker {
 
-    public static String check(String input) {
-        System.out.println(input);
-        String output = input;
-        if (output.contains("www.youtube.com/watch?")) {
-            input = input.substring(0, input.indexOf("www.youtube.com/watch?"));
-            output = input.substring(0, input.indexOf("www.youtube.com/watch?"));
-            int i = input.indexOf("www.youtube.com/watch?");
-            String link = "";
-            for (; i < input.length(); i++) {
-                if (input.charAt(i) == ' ') {
-                    break;
-                }
-            }
-            output = "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/" +
-                    input.substring(0, i) + "\" frameborder=\"0\" allowfullscreen></iframe>" +
-                    input.substring(i);
+    public static String embeddableVideo(String input) {
+        return "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/" + input.split("=")[1]
+                + "\" frameborder=\"0\" allowfullscreen></iframe>";
+    }
+
+    public static String getMedia(HttpServletRequest req) {
+        String output = "";
+        if (req.getParameter("media1").length() > 5) {
+            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media1")));
         }
-        System.out.println(output);
+        if (req.getParameter("media2").length() > 5) {
+            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media2")));
+        }
+        if (req.getParameter("media3").length() > 5) {
+            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media3")));
+        }
         return output;
     }
 }

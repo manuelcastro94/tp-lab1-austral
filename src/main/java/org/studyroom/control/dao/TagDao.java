@@ -1,7 +1,7 @@
 package org.studyroom.control.dao;
 
 import org.hibernate.Session;
-import org.studyroom.model.tag.Tag;
+import org.studyroom.model.entity.Tag;
 
 /**
  * Created with IntelliJ IDEA.

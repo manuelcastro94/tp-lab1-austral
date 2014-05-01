@@ -1,7 +1,7 @@
 <%@ page import="org.studyroom.model.Constants" %>
 <%--
   Created by IntelliJ IDEA.
-  org.studyroom.model.user.User: Federico
+  org.studyroom.model.entity.User: Federico
   Date: 28/03/2014
   Time: 21:10
   To change this template use File | Settings | File Templates.

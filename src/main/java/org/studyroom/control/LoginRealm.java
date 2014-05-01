@@ -4,7 +4,7 @@ package org.studyroom.control;
 import org.hibernate.Session;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 import org.studyroom.control.dao.UserDAO;
-import org.studyroom.model.user.User;
+import org.studyroom.model.entity.User;
 
 /**
  * Trivial implementation of the SecurityRealmInterface.
@@ -32,6 +32,8 @@ public class LoginRealm extends SimpleSecurityRealmBase {
         return user.getPassword().equals(password);
     }
 
-
+    public boolean isUserInRole(String username, String rolename) {
+        return true;
+    }
 }
 

@@ -9,7 +9,7 @@
 <body>
 <h1><%=Constants.HOME_TITLE%>
 </h1>
-
+<%@include file="../secured/post/ask.jsp" %>
 <%@include file="questionlist.jsp" %>
 
 

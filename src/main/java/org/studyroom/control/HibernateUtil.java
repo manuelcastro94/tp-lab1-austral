@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * Created with IntelliJ IDEA.
- * org.studyroom.model.user.User: Federico F. Favale
+ * org.studyroom.model.entity.User: Federico F. Favale
  * Date: 04/04/2014
  * Time: 14:05
  * To change this template use File | Settings | File Templates.

@@ -3,7 +3,7 @@ package org.studyroom.control.servlet;
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.UserDAO;
 import org.studyroom.model.Constants;
-import org.studyroom.model.user.User;
+import org.studyroom.model.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
- * org.studyroom.model.user.User: Federico F. Favale
+ * org.studyroom.model.entity.User: Federico F. Favale
  * Date: 28/03/2014
  * Time: 21:44
  * To change this template use File | Settings | File Templates.

@@ -1,8 +1,6 @@
 package org.studyroom.control.servlet;
 
-import org.studyroom.control.HibernateUtil;
-import org.studyroom.control.dao.QuestionDao;
-import org.studyroom.model.entity.Question;
+import org.studyroom.model.Constants;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,27 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Federico F. Favale
- * Date: 16/04/2014
- * Time: 10:45
+ * Date: 30/04/2014
+ * Time: 12:02
  * To change this template use File | Settings | File Templates.
  */
-public class LoadQuestionServlet extends HttpServlet {
+public class PostServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        List<Question> questions = QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession());
-        req.setAttribute("questions", questions);
-        ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/home/home.jsp");
-        rd.forward(req, resp);
-
-
+        if (req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).contains("q=")) {
+            ServletContext context = getServletContext();
+            RequestDispatcher rd = context.getRequestDispatcher("/postAnswer");
+            rd.forward(req, resp);
+        } else {
+            ServletContext context = getServletContext();
+            RequestDispatcher rd = context.getRequestDispatcher("/postQuestion");
+            rd.forward(req, resp);
+        }
     }
-
 }

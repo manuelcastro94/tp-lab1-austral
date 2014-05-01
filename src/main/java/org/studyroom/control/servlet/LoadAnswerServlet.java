@@ -2,8 +2,8 @@ package org.studyroom.control.servlet;
 
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.AnswerDao;
-import org.studyroom.model.question.Question;
-import org.studyroom.model.user.User;
+import org.studyroom.model.entity.Question;
+import org.studyroom.model.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

@@ -2,7 +2,7 @@ package org.studyroom.control.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.studyroom.model.question.Question;
+import org.studyroom.model.entity.Question;
 
 import java.util.List;
 
