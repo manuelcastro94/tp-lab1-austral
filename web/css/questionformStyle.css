@@ -1,0 +1,81 @@
+.GeneralClass {
+    /*border: solid 1px rgb(208,209,213);*/
+    /*border-radius: 5px;*/
+    width: 500px;
+    margin-bottom: 50px;
+}
+
+.QuestionsClass {
+    border: solid 1px rgb(208, 209, 213);
+    background-color: rgb(255, 255, 255);
+}
+
+.AnswersClass {
+    background-color: rgb(246, 247, 248);
+    border: solid 1px rgb(208, 209, 213);
+    border-bottom: none;
+    margin-top: -1px;
+    width: 450px;
+    margin-left: 48px;
+    margin-bottom: 20px;
+}
+
+.AnswerClass {
+    background-color: rgb(246, 247, 248);
+    border-bottom: solid 1px rgb(208, 209, 213);
+}
+
+.UserAnswer {
+    text-align: right;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    background-color: rgb(94, 213, 130);
+    display: inline-block;
+    height: 20px;
+    float: right;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.UserQuestion {
+    text-align: left;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-right: solid 1px rgb(208, 209, 213);
+    background-color: rgb(68, 158, 213);
+    display: inline-block;
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.Answer {
+    padding: 25px;
+}
+
+.Question {
+    padding: 25px;
+    padding-top: 4px;
+}
+
+.Tags {
+    padding: 2px;
+    display: inline-block;
+    background-color: #ff9449;
+    height: 20px;
+    border-top: solid 1px rgb(208, 209, 213);
+    border-right: solid 1px rgb(208, 209, 213);
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.AnswerButton {
+    text-align: right;
+    border: solid 1px rgb(208, 209, 213);
+    display: inline-block;
+    height: 20px;
+    float: right;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: -21px;
+    background-color: #818181;
+}
