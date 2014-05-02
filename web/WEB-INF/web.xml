@@ -90,6 +90,15 @@
         <url-pattern>/postAnswer</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginErrorServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.LoginErrorServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginErrorServlet</servlet-name>
+        <url-pattern>/loginerror</url-pattern>
+    </servlet-mapping>
 
     <!-- SecurityFilter works with custom error pages -->
     <!--<error-page>-->

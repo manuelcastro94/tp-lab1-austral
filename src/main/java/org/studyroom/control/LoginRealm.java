@@ -1,10 +1,8 @@
 package org.studyroom.control;
 
 
-import org.hibernate.Session;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 import org.studyroom.control.dao.UserDAO;
-import org.studyroom.model.entity.User;
 
 /**
  * Trivial implementation of the SecurityRealmInterface.
@@ -27,9 +25,11 @@ public class LoginRealm extends SimpleSecurityRealmBase {
      * @return null if the user cannot be authenticated, otherwise a Principal object is returned
      */
     public boolean booleanAuthenticate(String username, String password) {
-        Session session = HibernateUtil.getGuestSession();
-        User user = UserDAO.getInstance().getUser(session, username);
-        return user.getPassword().equals(password);
+        if (UserDAO.getInstance().exists(HibernateUtil.getGuestSession(), username)) {
+            return UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), username).getPassword().equals(password);
+        } else {
+            return false;
+        }
     }
 
     public boolean isUserInRole(String username, String rolename) {

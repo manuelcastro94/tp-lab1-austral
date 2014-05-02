@@ -12,6 +12,7 @@
 <html>
 <form id="<%=Constants.LOGIN_FORM_ID%>" action="<%=response.encodeURL(Constants.LOGIN_FORM_ACTION)%>" method="POST">
     <%if (request.getRemoteUser() == null) {%>
+    <%if (request.getQueryString() == null) {%>
     Email:
     <input type="text"
            name="<%=Constants.LOGIN_USERNAME_FIELD%>"
@@ -24,6 +25,11 @@
             >
     <input type="Submit" value="<%=Constants.LOG_IN%>">
     <%} else {%>
+    <div>User doesn't seem to exist</div>
+    <%
+        }
+    } else {
+    %>
     Welcome <%=request.getRemoteUser()%>
     <%}%>
 </form>
