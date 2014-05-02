@@ -13,6 +13,9 @@
 </head>
 <body>
 <form id="<%=Constants.REGISTER_FORM_ID%>" action="/studyroom/register" method="POST">
+    <%if (request.getQueryString() != null) {%>
+    <div>user already exists</div>
+    <%}%>
     Email:
     <input type="text"
            name="<%=Constants.REGISTER_USERNAME_FIELD%>"

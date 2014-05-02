@@ -23,10 +23,10 @@ public class UserDAO extends DataAO {
     }
 
 
-    public User getUser(Session session, String user) {
+    public User getUser(Session session, String email) {
         super.beginTransaction(session);
         Query query = session.createQuery("select user from User user where user.email= :yourUser");
-        query.setParameter("yourUser", user);
+        query.setParameter("yourUser", email);
         super.endTransaction(session);
         return (User) query.uniqueResult();
     }
@@ -37,5 +37,7 @@ public class UserDAO extends DataAO {
         super.endTransaction(session);
     }
 
-
+    public boolean exists(Session session, String email) {
+        return getUser(session, email) != null;
+    }
 }

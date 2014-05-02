@@ -22,9 +22,15 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(),
-                new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD)));
-        resp.sendRedirect("/studyroom/index.jsp");
+        User newUser = new User(req.getParameter(Constants.REGISTER_USERNAME_FIELD), req.getParameter(Constants.REGISTER_PASSWORD_FIELD));
+        if (!UserDAO.getInstance().exists(HibernateUtil.getGuestSession(), newUser.getEmail())) {
+            UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(), newUser);
+            resp.sendRedirect("/studyroom/index.jsp");
+        } else {
+            resp.sendRedirect("/studyroom/register/registerpage.jsp?noavailable");
+        }
+
+
     }
 
 }
