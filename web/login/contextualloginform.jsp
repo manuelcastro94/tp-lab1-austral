@@ -7,13 +7,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="css/contextuallogin.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="css/loginformStyle.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="css/buttonStyle.css" media="screen"/>
 <html>
 <form id="<%=Constants.LOGIN_FORM_ID%>" action="<%=response.encodeURL(Constants.LOGIN_FORM_ACTION)%>" method="POST">
     <%if (request.getRemoteUser() == null) {%>
     <%if (request.getQueryString() != null) {%>
-    <div>Invalid email and/or password</div>
+    <div id="invalid">Invalid email and/or password</div>
     <%}%>
     Email:
     <input type="text"

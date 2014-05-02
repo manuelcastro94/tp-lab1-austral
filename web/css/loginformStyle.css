@@ -1,0 +1,10 @@
+#loginForm {
+  padding-right: 80px;
+  text-align: right;
+}
+
+#invalid {
+  margin-top: -20px;
+  margin-right: 274px;
+  color: #b70000;
+}
