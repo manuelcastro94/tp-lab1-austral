@@ -18,7 +18,7 @@
     <div class="GeneralClass">
         <div class="QuestionsClass">
             <div class="UserQuestion">
-                <c:out value="User: ${question.getUser().getEmail()}"/><p>
+                <c:out value="${question.getUser().getEmail()}"/><p>
             </div>
             <div class="Question">
                 <c:out value="${question.getQuestion()}" escapeXml="false"/>
@@ -35,7 +35,7 @@
             <c:forEach var="answer" items="${question.getAnswers()}" varStatus="pStatus">
                 <div class="AnswerClass">
                     <div class="UserAnswer">
-                        <c:out value="By: ${answer.getUser().getEmail()}"/><p>
+                        <c:out value="${answer.getUser().getEmail()}"/><p>
                     </div>
                     <div class="Answer">
                         <c:out value="${answer}" escapeXml="false"/><p>
