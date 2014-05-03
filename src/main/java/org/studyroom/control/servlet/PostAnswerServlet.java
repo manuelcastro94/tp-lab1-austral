@@ -1,6 +1,7 @@
 package org.studyroom.control.servlet;
 
 import org.studyroom.control.HibernateUtil;
+import org.studyroom.control.PostChecker;
 import org.studyroom.control.dao.AnswerDao;
 import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.control.dao.UserDAO;
@@ -29,7 +30,7 @@ public class PostAnswerServlet extends HttpServlet {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
         Answer answer = new Answer(QuestionDao.getInstance().getQuestionById(HibernateUtil.getGuestSession(),
                 Long.parseLong(req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).replaceFirst("q=", ""))),
-                req.getParameter(Constants.TEXT_AREA), user
+                req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req)), user
         );
         AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         resp.sendRedirect("/studyroom/index.jsp");
