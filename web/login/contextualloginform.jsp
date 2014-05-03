@@ -15,6 +15,7 @@
     <%if (request.getQueryString() != null) {%>
     <div id="invalid">Invalid email and/or password</div>
     <%}%>
+
     Email:
     <input type="text"
            name="<%=Constants.LOGIN_USERNAME_FIELD%>"
