@@ -13,7 +13,7 @@
 <head>
     <title></title>
 </head>
-<body>
+<body id="mainQuestionBody">
 <c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
     <div class="GeneralClass">
         <div class="QuestionsClass">

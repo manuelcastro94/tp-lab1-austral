@@ -7,8 +7,18 @@ body {
     font-family: sans-serif;
 }
 
-h1 {
+#mainTitle {
+    position: absolute;
     font-style: italic;
+    left: 10px;
+    top: 20px;
 }
 
+#loginForm {
+    /*margin-top: -45px;*/
+}
+
+#mainHeader {
+
+}
 
