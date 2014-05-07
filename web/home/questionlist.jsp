@@ -31,6 +31,11 @@
                 <div class="UserEdit">
                     <%@include file="/secured/post/edit.jsp" %>
                 </div>
+                <div class="QuestionControlPanelClass">
+                    <div class="Check">
+                        <%@include file="/secured/mark/close.jsp" %>
+                    </div>
+                </div>
             </c:if>
             <div class="Question">
                 <c:out value="${question.getQuestion()}" escapeXml="false"/>
@@ -49,14 +54,19 @@
                     <div class="UserAnswer">
                         <c:out value="${answer.getUser().getEmail()}"/><p>
                     </div>
-                    <div class="GeneralVoteClass">
-                        <div class="VoteUP">
-                            1
+                    <c:if test="${question.getUser().equals(user)}">
+                        <div class="AnswerControlPanelClass">
+                            <div class="VoteUP">
+                                <%@include file="/secured/vote/voteup.jsp" %>
+                            </div>
+                            <div class="VoteDown">
+                                <%@include file="/secured/vote/votedown.jsp" %>
+                            </div>
+                            <div class="Check">
+                                <%@include file="/secured/mark/mark.jsp" %>
+                            </div>
                         </div>
-                        <div class="VoteDown">
-                            1
-                        </div>
-                    </div>
+                    </c:if>
                     <div class="Answer">
                         <c:out value="${answer}" escapeXml="false"/><p>
                     </div>

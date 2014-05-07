@@ -7,10 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title></title>
-</head>
+<%if (request.getRemoteUser() != null) {%>
 <body>
-
-</body>
+<a> up </a>
+    <%}%>
 </html>
