@@ -35,7 +35,7 @@ public class AnswerDao extends DataAO {
     }
 
     //TODO hacer q esto devuelva una lista de respuestas para una pregunta dada
-    public List<Answer> getAnswer(Session session, Question question) {
+    public List<Answer> getAnswers(Session session, Question question) {
         super.beginTransaction(session);
         Query query = session.createQuery("select question from Answer answer where question.answers= :yourAnswer");
         query.setParameter("yourAnswer", question);

@@ -70,16 +70,6 @@
         <url-pattern>/post</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-    <!--<servlet-name>LoadAnswerServlet</servlet-name>-->
-    <!--<servlet-class>org.studyroom.control.servlet.LoadAnswerServlet</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>LoadAnswerServlet</servlet-name>-->
-    <!--<url-pattern>/loadAnswer</url-pattern>-->
-    <!--</servlet-mapping>-->
-
     <servlet>
         <servlet-name>PostAnswerServlet</servlet-name>
         <servlet-class>org.studyroom.control.servlet.PostAnswerServlet</servlet-class>
@@ -88,6 +78,16 @@
     <servlet-mapping>
         <servlet-name>PostAnswerServlet</servlet-name>
         <url-pattern>/postAnswer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.EditQuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <url-pattern>/editQuestion</url-pattern>
     </servlet-mapping>
 
     <servlet>

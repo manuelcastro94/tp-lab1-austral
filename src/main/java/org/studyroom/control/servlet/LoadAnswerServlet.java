@@ -24,7 +24,7 @@ public class LoadAnswerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.setAttribute("answer", AnswerDao.getInstance().getAnswer(HibernateUtil.getGuestSession(), new Question("dsdfsdfds", new User("fede", "fede"))));
+        req.setAttribute("answer", AnswerDao.getInstance().getAnswers(HibernateUtil.getGuestSession(), new Question("dsdfsdfds", new User("fede", "fede"))));
         ServletContext context = getServletContext();
         RequestDispatcher rd = context.getRequestDispatcher("/home/home.jsp");
         rd.forward(req, resp);

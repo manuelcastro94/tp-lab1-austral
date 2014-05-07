@@ -18,6 +18,12 @@ public class Answer {
     private long id;
     @Column(name = "ANSWER")
     private String answer;
+    @Column(name = "UP")
+    private int up;
+    @Column(name = "DOWN")
+    private int down;
+    @Column(name = "MARKED")
+    private boolean marked;
     @ManyToOne(cascade = CascadeType.ALL)
     private Question question;
     @OneToOne
@@ -29,9 +35,24 @@ public class Answer {
         this.answer = answer;
         this.user = user;
         question.response(this);
+        up = 0;
+        down = 0;
+        marked = false;
     }
 
     public Answer() {
+    }
+
+    public void voteUp() {
+        up++;
+    }
+
+    public void voteDown() {
+        down++;
+    }
+
+    public int getDifference() {
+        return up - down;
     }
 
     @Override
@@ -41,6 +62,30 @@ public class Answer {
 
 
      /*getters and setters*/
+
+    public boolean isMarked() {
+        return marked;
+    }
+
+    public void setMarked(boolean valid) {
+        this.marked = valid;
+    }
+
+    public int getUp() {
+        return up;
+    }
+
+    public void setUp(int up) {
+        this.up = up;
+    }
+
+    public int getDown() {
+        return down;
+    }
+
+    public void setDown(int down) {
+        this.down = down;
+    }
 
     public String getAnswer() {
         return answer;

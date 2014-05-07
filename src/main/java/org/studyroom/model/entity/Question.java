@@ -21,6 +21,8 @@ public class Question {
     private long id;
     @Column(name = "QUESTION")
     private String question;
+    @Column(name = "CLOSED")
+    private boolean closed;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Answer> answers = new LinkedList<Answer>();
     @ManyToOne(cascade = CascadeType.ALL)
@@ -37,6 +39,7 @@ public class Question {
         this.question = question;
         this.user = user;
         addTags(tags);
+        closed = false;
     }
 
     public Question() {
@@ -59,6 +62,14 @@ public class Question {
     }
 
     /*getters and setters*/
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
+    }
 
     public String getQuestion() {
         return question;

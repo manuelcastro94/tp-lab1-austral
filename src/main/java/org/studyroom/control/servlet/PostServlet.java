@@ -21,14 +21,16 @@ public class PostServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        if (req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).contains("q=")) {
-            ServletContext context = getServletContext();
-            RequestDispatcher rd = context.getRequestDispatcher("/postAnswer");
-            rd.forward(req, resp);
+        String hiddenValue = req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE);
+        ServletContext context = getServletContext();
+        RequestDispatcher rd;
+        if (hiddenValue.contains("ask")) {
+            rd = context.getRequestDispatcher("/postQuestion");
+        } else if (hiddenValue.contains("edit&q=")) {
+            rd = context.getRequestDispatcher("/editQuestion");
         } else {
-            ServletContext context = getServletContext();
-            RequestDispatcher rd = context.getRequestDispatcher("/postQuestion");
-            rd.forward(req, resp);
+            rd = context.getRequestDispatcher("/postAnswer");
         }
+        rd.forward(req, resp);
     }
 }

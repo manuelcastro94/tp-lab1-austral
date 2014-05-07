@@ -80,7 +80,21 @@
     background-color: #818181;
 }
 
+.EditButton {
+    text-align: right;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    background-color: rgb(213, 211, 0);
+    display: inline-block;
+    height: 20px;
+    float: right;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: -21px;
+}
+
 #mainQuestionBody:not(#mainTitle):not(#loginForm) {
     /*margin-top: 50px;*/
     /*margin-left: calc(50% - 300px);*/
 }
+

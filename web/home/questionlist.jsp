@@ -1,3 +1,6 @@
+<%@ page import="org.studyroom.control.HibernateUtil" %>
+<%@ page import="org.studyroom.control.dao.UserDAO" %>
+<%@ page import="org.studyroom.model.entity.User" %>
 <%--
   Created by IntelliJ IDEA.
   org.studyroom.model.entity.User: Federico
@@ -13,6 +16,10 @@
 <head>
     <title></title>
 </head>
+<%
+    User thisUser = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), request.getRemoteUser());
+    pageContext.setAttribute("user", thisUser);
+%>
 <body id="mainQuestionBody">
 <c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
     <div class="GeneralClass">
@@ -20,6 +27,11 @@
             <div class="UserQuestion">
                 <c:out value="${question.getUser().getEmail()}"/><p>
             </div>
+            <c:if test="${question.getUser().equals(user)}">
+                <div class="UserEdit">
+                    <%@include file="/secured/post/edit.jsp" %>
+                </div>
+            </c:if>
             <div class="Question">
                 <c:out value="${question.getQuestion()}" escapeXml="false"/>
             </div>
@@ -36,6 +48,14 @@
                 <div class="AnswerClass">
                     <div class="UserAnswer">
                         <c:out value="${answer.getUser().getEmail()}"/><p>
+                    </div>
+                    <div class="GeneralVoteClass">
+                        <div class="VoteUP">
+                            1
+                        </div>
+                        <div class="VoteDown">
+                            1
+                        </div>
                     </div>
                     <div class="Answer">
                         <c:out value="${answer}" escapeXml="false"/><p>
