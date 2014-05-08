@@ -32,9 +32,11 @@
                     <%@include file="/secured/post/edit.jsp" %>
                 </div>
                 <div class="QuestionControlPanelClass">
-                    <div class="Check">
-                        <%@include file="/secured/mark/close.jsp" %>
-                    </div>
+                    <c:if test="${!question.isClosed()}">
+                        <div class="closed">
+                            <%@include file="/secured/mark/close.jsp" %>
+                        </div>
+                    </c:if>
                 </div>
             </c:if>
             <div class="Question">
