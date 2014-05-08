@@ -9,7 +9,7 @@
 <html>
 <%if (request.getRemoteUser() != null) {%>
 <body>
-<a href="/studyroom/down?a=${answer.getId()}">IIII</a>
+<a href="/studyroom/down?a=${answer.getId()}"><img src="/studyroom/images/down.png" width="20" height="20"></a>
 </body>
 <%}%>
 </html>

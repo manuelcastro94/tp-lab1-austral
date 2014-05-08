@@ -143,25 +143,11 @@
 }
 
 .VoteUP {
-    background-image: url("../images/up.png");
-    overflow-y: hidden ! important;
-    overflow-x: hidden ! important;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
     width: 20px;
     height: 20px;
-    color: rgba(0, 0, 0, 0);
 }
 
 .VoteDown {
-    background-image: url("../images/down.png");
-    overflow-y: hidden ! important;
-    overflow-x: hidden ! important;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
     width: 20px;
     height: 20px;
-    color: transparent;
 }
