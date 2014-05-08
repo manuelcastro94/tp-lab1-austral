@@ -34,15 +34,7 @@ public class QuestionDao extends DataAO {
         return (List<Question>) session.createCriteria(Question.class).list();
     }
 
-    public Question getQuestion(Session session, String question) {
-        super.beginTransaction(session);
-        Query query = session.createQuery("select question from Question question where question.question= :yourQuestion");
-        query.setParameter("yourQuestion", question);
-        super.endTransaction(session);
-        return (Question) query.uniqueResult();
-    }
-
-    public Question getQuestionById(Session session, long id) {
+    public Question getQuestion(Session session, long id) {
         super.beginTransaction(session);
         Query query = session.createQuery("select question from Question question where question.id= :yourid");
         query.setParameter("yourid", id);

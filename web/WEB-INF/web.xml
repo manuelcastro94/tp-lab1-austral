@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.RegisterServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.useraction.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -42,7 +42,7 @@
 
     <servlet>
         <servlet-name>PostQuestionServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.PostQuestionServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.post.PostQuestionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -52,7 +52,7 @@
 
     <servlet>
         <servlet-name>LoadQuestionServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.LoadQuestionServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.load.LoadQuestionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -62,7 +62,7 @@
 
     <servlet>
         <servlet-name>PostServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.PostServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.post.PostServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -72,7 +72,7 @@
 
     <servlet>
         <servlet-name>PostAnswerServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.PostAnswerServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.post.PostAnswerServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -82,7 +82,7 @@
 
     <servlet>
         <servlet-name>EditQuestionServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.EditQuestionServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.post.EditQuestionServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -92,12 +92,52 @@
 
     <servlet>
         <servlet-name>LoginErrorServlet</servlet-name>
-        <servlet-class>org.studyroom.control.servlet.LoginErrorServlet</servlet-class>
+        <servlet-class>org.studyroom.control.servlet.load.LoginErrorServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>LoginErrorServlet</servlet-name>
         <url-pattern>/loginerror</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CloseQuestionServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.useraction.CloseQuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CloseQuestionServlet</servlet-name>
+        <url-pattern>/close</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VoteUpAnswerServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.useraction.VoteUpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VoteUpAnswerServlet</servlet-name>
+        <url-pattern>/up</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VoteDownAnswerServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.useraction.VoteDownServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VoteDownAnswerServlet</servlet-name>
+        <url-pattern>/down</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MarkAnswerServlet</servlet-name>
+        <servlet-class>org.studyroom.control.servlet.useraction.MarkServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MarkAnswerServlet</servlet-name>
+        <url-pattern>/mark</url-pattern>
     </servlet-mapping>
 
     <!-- SecurityFilter works with custom error pages -->

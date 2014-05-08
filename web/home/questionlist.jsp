@@ -51,29 +51,40 @@
         <div class="AnswersClass">
             <c:forEach var="answer" items="${question.getAnswers()}" varStatus="pStatus">
                 <div class="AnswerClass">
+                    <c:if test="${answer.isMarked()}">
+                        <div class="Marked">
+                        </div>
+                    </c:if>
                     <div class="UserAnswer">
                         <c:out value="${answer.getUser().getEmail()}"/><p>
                     </div>
-                    <c:if test="${question.getUser().equals(user)}">
-                        <div class="AnswerControlPanelClass">
-                            <div class="VoteUP">
-                                <%@include file="/secured/vote/voteup.jsp" %>
-                            </div>
-                            <div class="VoteDown">
-                                <%@include file="/secured/vote/votedown.jsp" %>
-                            </div>
+                    <div class="Answer">
+                        <c:out value="${answer}" escapeXml="false"/><p>
+                    </div>
+                    <div class="AnswerControlPanelClass">
+                        <div class="VoteUP">
+                            <%@include file="/secured/vote/voteup.jsp" %>
+                        </div>
+                        <div class="VotesCount">
+                            <c:out value="${answer.getDifference()}" escapeXml="false"/>
+                        </div>
+                        <div class="VoteDown">
+                            <%@include file="/secured/vote/votedown.jsp" %>
+                        </div>
+                        <c:if test="${question.getUser().equals(user) && !answer.isMarked()}">
                             <div class="Check">
                                 <%@include file="/secured/mark/mark.jsp" %>
                             </div>
-                        </div>
-                    </c:if>
-                    <div class="Answer">
-                        <c:out value="${answer}" escapeXml="false"/><p>
+                        </c:if>
                     </div>
                 </div>
             </c:forEach>
         </div>
-        <%@include file="/secured/post/answer.jsp" %>
+        <c:if test="${!question.isClosed()}">
+            <div class="AnswerClassNode">
+                <%@include file="/secured/post/answer.jsp" %>
+            </div>
+        </c:if>
     </div>
 </c:forEach>
 </body>

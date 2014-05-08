@@ -9,6 +9,7 @@
 <html>
 <%if (request.getRemoteUser() != null) {%>
 <body>
-<a> down </a>
-    <%}%>
+<a href="/studyroom/down?a=${answer.getId()}">IIII</a>
+</body>
+<%}%>
 </html>

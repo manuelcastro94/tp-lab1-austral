@@ -1,4 +1,4 @@
-package org.studyroom.control.servlet;
+package org.studyroom.control.servlet.post;
 
 import org.studyroom.model.Constants;
 

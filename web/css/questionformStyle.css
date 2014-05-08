@@ -93,8 +93,75 @@
     margin-top: -21px;
 }
 
+.AnswerControlPanelClass {
+    text-align: left;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    border-top: solid 1px rgb(208, 209, 213);
+    background-color: rgb(96, 213, 71);
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20px;
+    margin-left: -31px;
+    margin-bottom: -1px;
+}
+
+.QuestionControlPanelClass {
+    color: #ffffff;
+    text-align: right;
+    border-top: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    border-right: solid 1px rgb(208, 209, 213);
+    background-color: rgb(213, 0, 0);
+    display: inline-block;
+    height: 20px;
+    float: right;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-top: -42px;
+    margin-right: -1px;
+}
+
 #mainQuestionBody:not(#mainTitle):not(#loginForm) {
     /*margin-top: 50px;*/
     /*margin-left: calc(50% - 300px);*/
 }
 
+.Marked {
+    background-image: url("../images/check.png");
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-left: 525px;
+    margin-bottom: 0px;
+    z-index: -1;
+}
+
+.VoteUP {
+    background-image: url("../images/up.png");
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 20px;
+    height: 20px;
+    color: rgba(0, 0, 0, 0);
+}
+
+.VoteDown {
+    background-image: url("../images/down.png");
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 20px;
+    height: 20px;
+    color: transparent;
+}

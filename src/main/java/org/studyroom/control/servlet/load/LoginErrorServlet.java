@@ -1,4 +1,4 @@
-package org.studyroom.control.servlet;
+package org.studyroom.control.servlet.load;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

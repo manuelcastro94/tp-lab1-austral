@@ -1,10 +1,14 @@
-package org.studyroom.control.servlet;
+package org.studyroom.control.servlet.post;
 
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.PostChecker;
 import org.studyroom.control.dao.QuestionDao;
+import org.studyroom.control.dao.TagDao;
+import org.studyroom.control.dao.UserDAO;
 import org.studyroom.model.Constants;
 import org.studyroom.model.entity.Question;
+import org.studyroom.model.entity.Tag;
+import org.studyroom.model.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,18 +19,23 @@ import java.io.IOException;
 /**
  * Created with IntelliJ IDEA.
  * User: Federico F. Favale
- * Date: 07/05/2014
- * Time: 10:06
+ * Date: 16/04/2014
+ * Time: 10:00
  * To change this template use File | Settings | File Templates.
  */
-public class EditQuestionServlet extends HttpServlet {
+public class PostQuestionServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Long questionID = Long.parseLong(req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).replaceFirst("edit&q=", ""));
+        User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
         String input = req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req));
-        Question question = QuestionDao.getInstance().getQuestionById(HibernateUtil.getGuestSession(), questionID);
-        question.setQuestion(input);
+        Question question = new Question(input, user);
+        String[] strTags = req.getParameter("tags").split(";");
+        for (String strTag : strTags) {
+            Tag tag = new Tag(strTag);
+            TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
+            question.addTags(tag);
+        }
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
         resp.sendRedirect("/studyroom/index.jsp");
     }

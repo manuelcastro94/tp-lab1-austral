@@ -28,13 +28,20 @@ public class AnswerDao extends DataAO {
         return (List<Answer>) session.createCriteria(Answer.class).list();
     }
 
+    public Answer getAnswer(Session session, long id) {
+        super.beginTransaction(session);
+        Query query = session.createQuery("select answer from Answer answer where answer.id= :yourid");
+        query.setParameter("yourid", id);
+        super.endTransaction(session);
+        return (Answer) query.uniqueResult();
+    }
+
     public void addAnswer(Session session, Answer answer) {
         super.beginTransaction(session);
         session.save(answer);
         super.endTransaction(session);
     }
 
-    //TODO hacer q esto devuelva una lista de respuestas para una pregunta dada
     public List<Answer> getAnswers(Session session, Question question) {
         super.beginTransaction(session);
         Query query = session.createQuery("select question from Answer answer where question.answers= :yourAnswer");

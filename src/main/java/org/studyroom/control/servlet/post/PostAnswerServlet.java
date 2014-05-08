@@ -1,13 +1,12 @@
-package org.studyroom.control.servlet;
+package org.studyroom.control.servlet.post;
 
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.PostChecker;
+import org.studyroom.control.dao.AnswerDao;
 import org.studyroom.control.dao.QuestionDao;
-import org.studyroom.control.dao.TagDao;
 import org.studyroom.control.dao.UserDAO;
 import org.studyroom.model.Constants;
-import org.studyroom.model.entity.Question;
-import org.studyroom.model.entity.Tag;
+import org.studyroom.model.entity.Answer;
 import org.studyroom.model.entity.User;
 
 import javax.servlet.ServletException;
@@ -19,24 +18,21 @@ import java.io.IOException;
 /**
  * Created with IntelliJ IDEA.
  * User: Federico F. Favale
- * Date: 16/04/2014
- * Time: 10:00
+ * Date: 22/04/2014
+ * Time: 21:53
  * To change this template use File | Settings | File Templates.
  */
-public class PostQuestionServlet extends HttpServlet {
+public class PostAnswerServlet extends HttpServlet {
+
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        String input = req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req));
-        Question question = new Question(input, user);
-        String[] strTags = req.getParameter("tags").split(";");
-        for (String strTag : strTags) {
-            Tag tag = new Tag(strTag);
-            TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
-            question.addTags(tag);
-        }
-        QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
+        Answer answer = new Answer(QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(),
+                Long.parseLong(req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).replaceFirst("q=", ""))),
+                req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req)), user
+        );
+        AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         resp.sendRedirect("/studyroom/index.jsp");
     }
 

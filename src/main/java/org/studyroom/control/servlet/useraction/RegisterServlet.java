@@ -1,4 +1,4 @@
-package org.studyroom.control.servlet;
+package org.studyroom.control.servlet.useraction;
 
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.UserDAO;

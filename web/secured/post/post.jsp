@@ -23,7 +23,7 @@
     boolean editing = request.getQueryString().contains("edit&q=");
     String questionStr = "";
     if (editing) {
-        questionStr = QuestionDao.getInstance().getQuestionById(HibernateUtil.getGuestSession(), Long.parseLong(request.getQueryString().substring(7))).getQuestion();
+        questionStr = QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), Long.parseLong(request.getQueryString().substring(7))).getQuestion();
     }
     pageContext.setAttribute("responding", responding);
     pageContext.setAttribute("editing", editing);
