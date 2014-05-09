@@ -11,6 +11,7 @@ import org.studyroom.model.entity.Tag;
 import org.studyroom.model.entity.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,7 @@ import java.io.IOException;
  * Time: 10:00
  * To change this template use File | Settings | File Templates.
  */
+@WebServlet(name = "PostQuestionServlet", urlPatterns = {"/postQuestion"})
 public class PostQuestionServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -33,8 +35,13 @@ public class PostQuestionServlet extends HttpServlet {
         String[] strTags = req.getParameter("tags").split(";");
         for (String strTag : strTags) {
             Tag tag = new Tag(strTag);
-            TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
-            question.addTags(tag);
+            if (TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tag.getTag()) == null) {
+                question.addTags(tag);
+                TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
+            } else {
+                question.addTags(TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tag.getTag()));
+            }
+
         }
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
         resp.sendRedirect("/studyroom/index.jsp");

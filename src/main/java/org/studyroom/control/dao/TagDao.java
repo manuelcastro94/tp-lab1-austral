@@ -1,7 +1,9 @@
 package org.studyroom.control.dao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.studyroom.model.entity.Tag;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,4 +28,21 @@ public class TagDao extends DataAO {
         session.save(Tag);
         super.endTransaction(session);
     }
+
+    public Tag getTag(Session session, String tag) {
+        super.beginTransaction(session);
+        Query query = session.createQuery("select tag from Tag tag where tag.tag= :yourtag");
+        query.setParameter("yourtag", tag);
+        super.endTransaction(session);
+        return (Tag) query.uniqueResult();
+    }
+
+    public Tag getTag(Session session, long tagId) {
+        super.beginTransaction(session);
+        Query query = session.createQuery("select tag from Tag tag where tag.id= :yourid");
+        query.setParameter("yourid", tagId);
+        super.endTransaction(session);
+        return ((Tag) query.uniqueResult());
+    }
+
 }

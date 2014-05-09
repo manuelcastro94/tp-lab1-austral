@@ -30,7 +30,7 @@
         <%--<c:out value="Tags: ${question.getTags()}"/><p>--%>
         <c:out value="Tags:"/>
         <c:forEach var="tag" items="${question.getTags()}" varStatus="pStatus">
-            <c:out value="${tag}"/>
+            <%@include file="/home/tag.jsp" %>
         </c:forEach>
     </div>
 </html>

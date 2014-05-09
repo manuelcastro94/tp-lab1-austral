@@ -7,6 +7,7 @@ import org.studyroom.model.entity.Answer;
 import org.studyroom.model.entity.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import java.io.IOException;
  * Time: 18:36
  * To change this template use File | Settings | File Templates.
  */
+@WebServlet(name = "VoteUpServlet", urlPatterns = {"/up"})
 public class VoteUpServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
