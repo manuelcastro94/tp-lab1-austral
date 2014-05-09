@@ -1,6 +1,5 @@
 package org.studyroom.control.servlet.useraction;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +13,8 @@ import java.io.IOException;
 public class LogOutServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        HttpSession session= req.getSession();
-
+        HttpSession session = req.getSession();
         session.invalidate();
-        RequestDispatcher rd = req.getRequestDispatcher(""); //The url where go after logout
-        rd.forward(req,res);
+        res.sendRedirect("/studyroom/index.jsp");
     }
 }
