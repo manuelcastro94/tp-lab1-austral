@@ -32,6 +32,7 @@
     <input type="Submit" value="<%=Constants.LOG_IN%>">
     <%} else {%>
     Welcome <%=request.getRemoteUser()%>
+
     <a href= "<%=request.getContextPath()%>/logout">Log Out</a>
     <%}%>
 </form>

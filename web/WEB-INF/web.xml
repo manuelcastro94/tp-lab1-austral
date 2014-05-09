@@ -40,6 +40,7 @@
         <servlet-class>org.studyroom.control.servlet.useraction.LogOutServlet</servlet-class>
     </servlet>
 
+
     <servlet-mapping>
         <servlet-name>LogOutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
