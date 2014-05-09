@@ -94,14 +94,15 @@
 }
 
 .AnswerControlPanelClass {
-    text-align: left;
+    text-align: center;
     border-bottom: solid 1px rgb(208, 209, 213);
     border-left: solid 1px rgb(208, 209, 213);
     border-top: solid 1px rgb(208, 209, 213);
     background-color: rgb(246, 247, 248);
     padding: 5px;
     width: 20px;
-    margin-left: -30px;
+    margin-left: -31px;
+    margin-top: -70px;
     margin-bottom: -1px;
 }
 
@@ -147,6 +148,12 @@
 }
 
 .VoteDown {
+    width: 20px;
+    height: 20px;
+}
+
+.Check {
+    margin-top: 2px;
     width: 20px;
     height: 20px;
 }

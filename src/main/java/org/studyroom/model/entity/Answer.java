@@ -1,6 +1,8 @@
 package org.studyroom.model.entity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,6 +31,8 @@ public class Answer {
     @OneToOne
     @JoinColumn(name = "USER")
     private User user;
+    @OneToMany
+    private List<User> votedUsers = new LinkedList<User>();
 
     public Answer(Question question, String answer, User user) {
         this.question = question;
@@ -43,12 +47,22 @@ public class Answer {
     public Answer() {
     }
 
-    public void voteUp() {
-        up++;
+    public void voteUp(User user) {
+        if (!hasVoted(user)) {
+            up++;
+//            votedUsers.add(user);
+        }
     }
 
-    public void voteDown() {
-        down++;
+    public void voteDown(User user) {
+        if (!hasVoted(user)) {
+            down++;
+//            votedUsers.add(user);
+        }
+    }
+
+    public boolean hasVoted(User user) {
+        return votedUsers.contains(user) || this.user.equals(user);
     }
 
     public int getDifference() {
@@ -62,6 +76,14 @@ public class Answer {
 
 
      /*getters and setters*/
+
+    public List<User> getVotedUsers() {
+        return votedUsers;
+    }
+
+    public void setVotedUsers(List<User> votedUsers) {
+        this.votedUsers = votedUsers;
+    }
 
     public boolean isMarked() {
         return marked;
