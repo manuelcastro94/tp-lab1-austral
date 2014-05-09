@@ -50,6 +50,7 @@
 
 .Answer {
     padding: 25px;
+    min-height: 80px;
 }
 
 .Question {
