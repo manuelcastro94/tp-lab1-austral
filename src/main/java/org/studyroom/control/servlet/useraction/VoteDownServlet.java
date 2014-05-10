@@ -28,8 +28,9 @@ public class VoteDownServlet extends HttpServlet {
         Long answerID = Long.parseLong(req.getQueryString().replaceFirst("a=", ""));
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
         Answer answer = AnswerDao.getInstance().getAnswer(HibernateUtil.getGuestSession(), answerID);
-        if (!answer.hasVoted(user)) {
-            answer.voteDown(user);
+        if (!user.hasVoted(answer)) {
+            user.voteDown(answer);
+            UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(), user);
             AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         }
         resp.sendRedirect("/studyroom/goTo?goto&q=" + answer.getQuestion().getId());

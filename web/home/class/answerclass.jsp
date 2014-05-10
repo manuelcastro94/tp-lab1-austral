@@ -1,3 +1,7 @@
+<%@ page import="org.studyroom.control.HibernateUtil" %>
+<%@ page import="org.studyroom.control.dao.UserDAO" %>
+<%@ page import="org.studyroom.model.entity.Answer" %>
+<%@ page import="org.studyroom.model.entity.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: Federico
@@ -9,6 +13,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="css/questionformStyle.css" media="screen"/>
 <html>
+<%
+    User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), request.getRemoteUser());
+    request.setAttribute("user", user);
+    request.setAttribute("diffUser", !(((Answer) request.getAttribute("answer")).getUser()).equals(user));
+%>
 <div class="ShadowAnswer">sdff</div>
 <c:set var="answer" value="${requestScope.answer}" scope="request"/>
 <c:if test="${answer.isMarked()}">
@@ -22,7 +31,7 @@
     <c:out value="${answer}" escapeXml="false"/><p>
 </div>
 <div class="AnswerControlPanelClass">
-    <c:if test="${!answer.hasVoted(user)}">
+    <c:if test="${!user.hasVoted(answer) && logged && diffUser}">
         <div class="VoteUP">
             <a href="/studyroom/up?a=${answer.getId()}"><img src="/studyroom/images/up.ico" width="20" height="20"></a>
         </div>
@@ -30,7 +39,7 @@
     <div class="VotesCount">
         <c:out value="${answer.getDifference()}" escapeXml="false"/>
     </div>
-    <c:if test="${!answer.hasVoted(user)}">
+    <c:if test="${!user.hasVoted(answer) && logged && diffUser}">
         <div class="VoteDown">
             <a href="/studyroom/down?a=${answer.getId()}"><img src="/studyroom/images/down.ico" width="20" height="20"></a>
         </div>

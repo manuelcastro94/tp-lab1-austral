@@ -1,6 +1,3 @@
-<%@ page import="org.studyroom.control.HibernateUtil" %>
-<%@ page import="org.studyroom.control.dao.UserDAO" %>
-<%@ page import="org.studyroom.model.entity.User" %>
 <%--
   Created by IntelliJ IDEA.
   org.studyroom.model.entity.User: Federico
@@ -16,12 +13,7 @@
 <head>
     <title></title>
 </head>
-<%
-    User thisUser = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), request.getRemoteUser());
-    pageContext.setAttribute("user", thisUser);
-%>
 <body id="mainQuestionBody">
-<%--<c:set var="user" value="${<%=thisUser%>}" scope="request" />--%>
 <c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
     <div class="GeneralClass" style="width: 650px">
         <c:set var="question" value="${question}" scope="request"/>

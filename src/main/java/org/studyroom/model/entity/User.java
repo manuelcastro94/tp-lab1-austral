@@ -25,6 +25,14 @@ public class User {
     private List<Question> questions = new LinkedList<Question>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Answer> answers = new LinkedList<Answer>();
+    @ElementCollection
+    @CollectionTable(name = "VOTE_UP")
+    @Column(name = "answerId")
+    private List<Long> votedAnswersUp = new LinkedList<Long>();
+    @ElementCollection
+    @CollectionTable(name = "VOTE_DOWN")
+    @Column(name = "answerId")
+    private List<Long> votedAnswersDown = new LinkedList<Long>();
 
     public User(String email, String password) {
         this.email = email;
@@ -71,7 +79,37 @@ public class User {
                 '}';
     }
 
+    public void voteUp(Answer answer) {
+        answer.voteUp();
+        votedAnswersUp.add(answer.getId());
+    }
+
+    public void voteDown(Answer answer) {
+        answer.voteDown();
+        votedAnswersDown.add(answer.getId());
+    }
+
+    public boolean hasVoted(Answer answer) {
+        return votedAnswersUp.contains(answer.getId()) || votedAnswersDown.contains(answer.getId());
+    }
+
     /*getters and setters*/
+
+    public List<Long> getVotedAnswersUp() {
+        return votedAnswersUp;
+    }
+
+    public void setVotedAnswersUp(List<Long> votedAnswersUp) {
+        this.votedAnswersUp = votedAnswersUp;
+    }
+
+    public List<Long> getVotedAnswersDown() {
+        return votedAnswersDown;
+    }
+
+    public void setVotedAnswersDown(List<Long> votedAnswersDown) {
+        this.votedAnswersDown = votedAnswersDown;
+    }
 
     public long getId() {
         return id;

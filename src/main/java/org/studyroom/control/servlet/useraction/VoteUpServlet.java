@@ -28,9 +28,10 @@ public class VoteUpServlet extends HttpServlet {
         Long answerID = Long.parseLong(req.getQueryString().replaceFirst("a=", ""));
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
         Answer answer = AnswerDao.getInstance().getAnswer(HibernateUtil.getGuestSession(), answerID);
-        if (!answer.hasVoted(user)) {
-            answer.voteUp(user);
+        if (!user.hasVoted(answer)) {
+            user.voteUp(answer);
             AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
+            UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(), user);
         }
         resp.sendRedirect("/studyroom/goTo?goto&q=" + answer.getQuestion().getId());
     }

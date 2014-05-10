@@ -50,6 +50,7 @@
         <div class="AnswersClass">
             <c:forEach var="answer" items="${question.getAnswers()}" varStatus="pStatus">
                 <div class="AnswerClass">
+                    <c:set var="logged" value="${logged}" scope="request"/>
                     <c:set var="answer" value="${answer}" scope="request"/>
                     <%@include file="../class/answerclass.jsp" %>
                 </div>

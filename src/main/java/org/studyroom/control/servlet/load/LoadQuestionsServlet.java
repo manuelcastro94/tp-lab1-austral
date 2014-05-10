@@ -26,7 +26,6 @@ public class LoadQuestionsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         List<Question> questions = QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession());
         req.setAttribute("questions", questions);
         ServletContext context = getServletContext();
