@@ -21,18 +21,11 @@
     pageContext.setAttribute("user", thisUser);
 %>
 <body id="mainQuestionBody">
+<%--<c:set var="user" value="${<%=thisUser%>}" scope="request" />--%>
 <c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
-    <div class="GeneralClass">
+    <div class="GeneralClass" style="width: 650px">
+        <c:set var="question" value="${question}" scope="request"/>
         <%@include file="question.jsp" %>
-    </div>
-    <div class="AnswersClass">
-        <%@include file="answer.jsp" %>
-    </div>
-    <c:if test="${!question.isClosed()}">
-        <div class="AnswerClassNode">
-            <%@include file="/secured/post/answer.jsp" %>
-        </div>
-    </c:if>
     </div>
 </c:forEach>
 </body>

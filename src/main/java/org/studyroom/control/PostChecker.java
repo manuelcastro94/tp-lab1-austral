@@ -18,15 +18,17 @@ public class PostChecker {
 
     public static String getMedia(HttpServletRequest req) {
         String output = "  \n";
-        if (req.getParameter("media1").length() > 5) {
-            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media1"))).concat("  \n");
-        }
-        if (req.getParameter("media2").length() > 5) {
-            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media2"))).concat("  \n");
-        }
-        if (req.getParameter("media3").length() > 5) {
-            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media3"))).concat("  \n");
-        }
+        req.getParameter("media");
+
+//        if (req.getParameter("media1").length() > 5) {
+//            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media1"))).concat("  \n");
+//        }
+//        if (req.getParameter("media2").length() > 5) {
+//            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media2"))).concat("  \n");
+//        }
+//        if (req.getParameter("media3").length() > 5) {
+//            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media3"))).concat("  \n");
+//        }
         return output;
     }
 }

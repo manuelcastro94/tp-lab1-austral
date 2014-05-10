@@ -31,7 +31,7 @@ public class PostQuestionServlet extends HttpServlet {
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
         String input = req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req));
-        Question question = new Question(input, user);
+        Question question = new Question(req.getParameter(Constants.TITLE_FIELD), input, user);
         String[] strTags = req.getParameter("tags").split(";");
         for (String strTag : strTags) {
             Tag tag = new Tag(strTag);

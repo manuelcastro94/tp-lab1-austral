@@ -11,7 +11,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>Post</title>
@@ -30,10 +29,29 @@
     pageContext.setAttribute("asking", asking);
     pageContext.setAttribute("questionToEdit", questionStr);
 %>
+<SCRIPT language="javascript">
+    function add(link) {
+        if (link.value != "") {
+            //Create an input type dynamically.
+            var element = document.createElement("input");
+            element.type = "text";
+            element.contenteditable = false;
+            element.value = link;
+            var foo = document.getElementById("youtubeLinks");
+            document.getElementById('mediaInput').value = '';
+            //Append the element in page (in span).
+            foo.appendChild(element);
+
+        }
+    }
+</SCRIPT>
+<a id="home" href="/studyroom/index.jsp">Home</a>
+
 <form id="postForm" action="/studyroom/post" method="GET" name="form1">
     <input type="hidden"
            name="<%=QUESTION_HIDDEN_ID_VALUE%>"
            value="<%=request.getQueryString()%>"/>
+    <INPUT value="Untitled question" id="<%=Constants.TITLE_FIELD%>" name="<%=Constants.TITLE_FIELD%>"/>
 
     <div id="sample">
         <script type="text/javascript" src="../../editor/nicEdit.js"></script>
@@ -47,16 +65,13 @@
             <%=questionStr%>
         </textarea><br/>
 
-        <div id="media">
-            <label>Youtube video 1:
-                <input type="text" name="media1"/>
+        <div name="media">
+            <label>Youtube video:
+                <input type="text" id="mediaInput"/>
             </label>
-            <label>Youtube video 2:
-                <input type="text" name="media2"/>
-            </label>
-            <label>Youtube video 3:
-                <input type="text" name="media3"/>
-            </label>
+            <INPUT type="button" value="Add" onclick="add(document.getElementById('mediaInput').value)"/>
+
+            <div id="youtubeLinks" style="max-width: 100px"></div>
         </div>
         <c:if test="${!responding || editing}">
             <div id="tags">

@@ -21,8 +21,8 @@ import java.util.List;
  * Time: 10:45
  * To change this template use File | Settings | File Templates.
  */
-@WebServlet(name = "LoadQuestionServlet", urlPatterns = {"/index.jsp"})
-public class LoadQuestionServlet extends HttpServlet {
+@WebServlet(name = "LoadQuestionsServlet", urlPatterns = {"/index.jsp"})
+public class LoadQuestionsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

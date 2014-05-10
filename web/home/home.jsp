@@ -10,8 +10,12 @@
     <%@include file="../login/contextualloginform.jsp" %>
 </head>
 <body>
-<%@include file="../secured/post/ask.jsp" %>
-<%@include file="questionlist.jsp" %>
+<div>
+    <%@include file="../secured/post/ask.jsp" %>
+</div>
+<div id="QuestionList">
+    <%@include file="template/questionlist.jsp" %>
+</div>
 
 
 </body>

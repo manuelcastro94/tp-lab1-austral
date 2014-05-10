@@ -32,6 +32,6 @@ public class VoteUpServlet extends HttpServlet {
             answer.voteUp(user);
             AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         }
-        resp.sendRedirect("/studyroom/index.jsp");
+        resp.sendRedirect("/studyroom/goTo?goto&q=" + answer.getQuestion().getId());
     }
 }

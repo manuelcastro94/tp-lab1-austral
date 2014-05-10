@@ -27,6 +27,6 @@ public class MarkServlet extends HttpServlet {
         Answer answer = AnswerDao.getInstance().getAnswer(HibernateUtil.getGuestSession(), answerID);
         answer.setMarked(true);
         AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
-        resp.sendRedirect("/studyroom/index.jsp");
+        resp.sendRedirect("/studyroom/goTo?goto&q=" + answer.getQuestion().getId());
     }
 }

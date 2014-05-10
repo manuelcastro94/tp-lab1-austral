@@ -21,6 +21,8 @@ public class Question {
     private long id;
     @Column(name = "QUESTION")
     private String question;
+    @Column(name = "TITLE")
+    private String title;
     @Column(name = "CLOSED")
     private boolean closed;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -30,12 +32,14 @@ public class Question {
     @ManyToMany(fetch = FetchType.LAZY, targetEntity = Tag.class, mappedBy = "questions", cascade = CascadeType.ALL)
     private List<Tag> tags = new LinkedList<Tag>();
 
-    public Question(String question, User user) {
+    public Question(String title, String question, User user) {
+        this.title = title;
         this.question = question;
         this.user = user;
     }
 
-    public Question(String question, User user, Tag... tags) {
+    public Question(String title, String question, User user, Tag... tags) {
+        this.title = title;
         this.question = question;
         this.user = user;
         addTags(tags);
@@ -62,6 +66,14 @@ public class Question {
     }
 
     /*getters and setters*/
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public boolean isClosed() {
         return closed;

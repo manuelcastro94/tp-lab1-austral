@@ -29,13 +29,13 @@ public class PostAnswerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        long questionId = Long.parseLong(req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).replaceFirst("q=", ""));
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        Answer answer = new Answer(QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(),
-                Long.parseLong(req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).replaceFirst("q=", ""))),
+        Answer answer = new Answer(QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), questionId),
                 req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req)), user
         );
         AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
-        resp.sendRedirect("/studyroom/index.jsp");
+        resp.sendRedirect("/studyroom/goTo?goto&q=" + questionId);
     }
 
 }

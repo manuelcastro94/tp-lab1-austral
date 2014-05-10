@@ -20,15 +20,16 @@ import java.io.IOException;
  * Time: 14:19
  * To change this template use File | Settings | File Templates.
  */
-@WebServlet(name = "SearchByTagServlet", urlPatterns = {"/searchByTag"})
-public class SearchByTagServlet extends HttpServlet {
+@WebServlet(name = "FilterByTagServlet", urlPatterns = {"/filterByTag"})
+public class FilterByTagServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        Long tagId = Long.parseLong(req.getQueryString().replaceFirst("t=", ""));
+        Long tagId = Long.parseLong(req.getQueryString().substring(req.getQueryString().lastIndexOf("t=") + 2));
         Tag tag = TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tagId);
+        req.setAttribute("tag", tag);
         req.setAttribute("questionsByTag", tag.getQuestions());
         ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/home/userload.jsp");
+        RequestDispatcher rd = context.getRequestDispatcher("/home/filterquestionbytag.jsp");
         rd.forward(req, res);
     }
 }
