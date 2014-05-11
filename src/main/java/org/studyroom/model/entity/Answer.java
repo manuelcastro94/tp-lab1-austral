@@ -33,6 +33,7 @@ public class Answer {
     public Answer(Question question, String answer, User user) {
         this.question = question;
         this.answer = answer;
+        user.addAnswer(this);
         this.user = user;
         question.response(this);
         up = 0;

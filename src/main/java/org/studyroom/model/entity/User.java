@@ -33,10 +33,16 @@ public class User {
     @CollectionTable(name = "VOTE_DOWN")
     @Column(name = "answerId")
     private List<Long> votedAnswersDown = new LinkedList<Long>();
+    @Column
+    private int upVotes;
+    @Column
+    private int downVotes;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+        upVotes = 0;
+        downVotes = 0;
     }
 
     public User() {
@@ -81,11 +87,13 @@ public class User {
 
     public void voteUp(Answer answer) {
         answer.voteUp();
+        answer.getUser().votedUp();
         votedAnswersUp.add(answer.getId());
     }
 
     public void voteDown(Answer answer) {
         answer.voteDown();
+        answer.getUser().votedDown();
         votedAnswersDown.add(answer.getId());
     }
 
@@ -93,7 +101,39 @@ public class User {
         return votedAnswersUp.contains(answer.getId()) || votedAnswersDown.contains(answer.getId());
     }
 
+    public void addQuestion(Question question) {
+        questions.add(question);
+    }
+
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
+    }
+
+    public void votedUp() {
+        upVotes++;
+    }
+
+    public void votedDown() {
+        downVotes++;
+    }
+
     /*getters and setters*/
+
+    public int getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(int upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public int getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(int downVotes) {
+        this.downVotes = downVotes;
+    }
 
     public List<Long> getVotedAnswersUp() {
         return votedAnswersUp;

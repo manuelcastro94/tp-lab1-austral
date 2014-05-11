@@ -3,11 +3,9 @@ package org.studyroom.control.servlet.post;
 import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.PostChecker;
 import org.studyroom.control.dao.QuestionDao;
-import org.studyroom.control.dao.TagDao;
 import org.studyroom.control.dao.UserDAO;
 import org.studyroom.model.Constants;
 import org.studyroom.model.entity.Question;
-import org.studyroom.model.entity.Tag;
 import org.studyroom.model.entity.User;
 
 import javax.servlet.ServletException;
@@ -30,19 +28,9 @@ public class PostQuestionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        String input = req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req));
-        Question question = new Question(req.getParameter(Constants.TITLE_FIELD), input, user);
-        String[] strTags = req.getParameter("tags").split(";");
-        for (String strTag : strTags) {
-            Tag tag = new Tag(strTag);
-            if (TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tag.getTag()) == null) {
-                question.addTags(tag);
-                TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
-            } else {
-                question.addTags(TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tag.getTag()));
-            }
-
-        }
+        String questionStr = req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req));
+        String questionTitle = req.getParameter(Constants.TITLE_FIELD);
+        Question question = QuestionDao.makeQuestion(user, questionTitle, questionStr, req.getParameter("tags").split(";"));
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
         resp.sendRedirect("/studyroom/index.jsp");
     }

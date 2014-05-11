@@ -1,5 +1,8 @@
 package org.studyroom.model.entity;
 
+import org.studyroom.control.HibernateUtil;
+import org.studyroom.control.dao.TagDao;
+
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,14 +38,36 @@ public class Question {
     public Question(String title, String question, User user) {
         this.title = title;
         this.question = question;
+        user.addQuestion(this);
         this.user = user;
     }
 
-    public Question(String title, String question, User user, Tag... tags) {
+    public Question(long id, String title, String question, User user, Tag... tags) {
+        this.id = id;
         this.title = title;
         this.question = question;
+        user.addQuestion(this);
         this.user = user;
         addTags(tags);
+        closed = false;
+    }
+
+    public Question(long id, String title, String question, User user, String... tags) {
+        this.id = id;
+        this.title = title;
+        this.question = question;
+        user.addQuestion(this);
+        this.user = user;
+        generateTags(tags);
+        closed = false;
+    }
+
+    public Question(String title, String question, User user, String... tags) {
+        this.title = title;
+        this.question = question;
+        user.addQuestion(this);
+        this.user = user;
+        generateTags(tags);
         closed = false;
     }
 
@@ -62,6 +87,27 @@ public class Question {
         for (Tag tag : tags) {
             this.tags.add(tag);
             tag.addQuestion(this);
+        }
+    }
+
+    public void deleteAllTags() {
+        for (Tag tag : tags) {
+            tag.deleteQuestion(this);
+            TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
+        }
+        tags = new LinkedList<Tag>();
+    }
+
+
+    public void generateTags(String[] tags) {
+        for (String strTag : tags) {
+            Tag tag = new Tag(strTag);
+            if (TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tag.getTag()) == null) {
+                addTags(tag);
+                TagDao.getInstance().addTag(HibernateUtil.getGuestSession(), tag);
+            } else {
+                addTags(TagDao.getInstance().getTag(HibernateUtil.getGuestSession(), tag.getTag()));
+            }
         }
     }
 

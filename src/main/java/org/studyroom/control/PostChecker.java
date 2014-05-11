@@ -11,24 +11,31 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class PostChecker {
 
-    public static String embeddableVideo(String input) {
-        return "<iframe width=\"320\" height=\"240\" src=\"//www.youtube.com/embed/" + input.split("=")[1]
-                + "\" frameborder=\"0\" allowfullscreen></iframe>";
+//    public static String encode(String input) {
+//        return "<iframe width=\"320\" height=\"240\" src=\"//www.youtube.com/embed/" + input
+//                + "\" frameborder=\"0\" allowfullscreen></iframe><br/>";
+//    }
+
+    public static String encode(String input) {
+        return "[youtubeVideo]" + input + "[/youtubeVideo]\n";
     }
 
     public static String getMedia(HttpServletRequest req) {
-        String output = "  \n";
-        req.getParameter("media");
-
-//        if (req.getParameter("media1").length() > 5) {
-//            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media1"))).concat("  \n");
-//        }
-//        if (req.getParameter("media2").length() > 5) {
-//            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media2"))).concat("  \n");
-//        }
-//        if (req.getParameter("media3").length() > 5) {
-//            output = output.concat(PostChecker.embeddableVideo(req.getParameter("media3"))).concat("  \n");
-//        }
+        String output = "<br/>";
+        int i = 1;
+        if (req.getParameter("1") != null) {
+            do {
+                output += encode(req.getParameter(i + "").split("=")[1]);
+                i++;
+            } while (req.getParameter(i + "") != null);
+        }
         return output;
     }
+
+    public static String decode(String input) {
+//        return input;
+        return input.replace("[youtubeVideo]", "<iframe width=\"320\" height=\"240\" src=\"//www.youtube.com/embed/")
+                .replace("[/youtubeVideo]", "\" frameborder=\"0\" allowfullscreen></iframe>");
+    }
+
 }

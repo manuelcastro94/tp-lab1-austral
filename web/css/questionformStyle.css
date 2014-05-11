@@ -1,14 +1,26 @@
+@-moz-keyframes a {
+    from {
+        transform: rotate(70deg) !important; /*70*/
+    }
+
+    to {
+        transform: rotate(0deg) !important; /*70*/
+    }
+}
+
 .GeneralClass {
     /*border: solid 1px rgb(208,209,213);*/
     /*border-radius: 5px;*/
+    /*animation-name: a !important;*/
+    /*animation-duration: 10s!important;*/
     width: 600px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .QuestionsClass {
     margin-top: 50px;
     width: 598px;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
     border: solid 1px rgb(208, 209, 213);
     background-color: rgb(255, 255, 255);
 }
@@ -16,29 +28,31 @@
 .AnswersClass {
     background-color: rgb(246, 247, 248);
     border: solid 1px rgb(208, 209, 213);
-    border-bottom: none;
     margin-top: -1px;
     width: 550px;
     margin-left: 48px;
-    margin-bottom: 20px;
-}
-
-.AnswerClass {
-    background-color: rgb(246, 247, 248);
-    border-bottom: solid 1px rgb(208, 209, 213);
+    padding-bottom: 20px;
 }
 
 .UserAnswer {
     text-align: right;
     border-bottom: solid 1px rgb(208, 209, 213);
     border-left: solid 1px rgb(208, 209, 213);
-    background-color: rgb(94, 213, 130);
+    background-color: rgb(78, 171, 103);
     display: inline-block;
     height: 20px;
     float: right;
     padding: 2px;
     padding-right: 5px;
     padding-left: 5px;
+}
+
+.UserQuestion a:visited,
+.UserQuestion a:link,
+.UserAnswer a:visited,
+.UserAnswer a:link {
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .UserQuestion {
@@ -66,26 +80,29 @@
 .Tags {
     float: left;
     display: inline-block;
-    background-color: #ff9449;
+    background-color: #ffffff;
+    border: solid 1px rgb(208, 209, 213);
+    border-top: none;
     height: 20px;
-    padding: 2px;
-    border-top: solid 1px rgb(208, 209, 213);
-    border-right: solid 1px rgb(208, 209, 213);
     padding-right: 5px;
     padding-left: 5px;
-    margin-top: 25px;
+    padding-bottom: 3px;
+    margin-left: -1px;
+    margin-top: 0px;
 }
 
 .AnswerButton {
-    float: left;
+    float: right;
     text-align: right;
     border: solid 1px rgb(208, 209, 213);
+    border-top: none;
     height: 20px;
     padding-right: 5px;
     padding-left: 5px;
-    margin-top: -21px;
-    margin-left: 520px;
-    background-color: #818181;
+    padding-bottom: 3px;
+    margin-top: -1px;
+    margin-right: 50px;
+    background-color: #ffffff;
 }
 
 .AnswerControlPanelClass {
@@ -106,6 +123,21 @@
     /*margin-left: calc(50% - 300px);*/
 }
 
+.ClosedQuestion {
+    background-image: url("../images/closed.png");
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    margin-left: 530px;
+    margin-top: -25px;
+    z-index: 1;
+}
+
 .Marked {
     background-image: url("../images/check.png");
     overflow-y: hidden ! important;
@@ -117,8 +149,8 @@
     height: 80px;
     position: absolute;
     margin-left: 510px;
-    margin-bottom: 0px;
-    z-index: 1;
+    margin-top: 20px;
+    z-index: 0;
 }
 
 .VoteUP {
@@ -161,14 +193,15 @@
 .AnswersNum {
     text-align: left;
     height: 20px;
-    padding: 2px;
+    padding-bottom: 2px;
     padding-right: 5px;
     padding-left: 5px;
-    border-top: solid 1px rgb(208, 209, 213);
-    border-left: solid 1px rgb(208, 209, 213);
-    background-color: rgb(15, 255, 185);
+    border: solid 1px rgb(208, 209, 213);
+    border-top: none;
+    background-color: rgb(255, 255, 255);
     float: right;
-    margin-top: 25px;
+    margin-top: 0px;
+    margin-right: -1px;
 }
 
 .Title {

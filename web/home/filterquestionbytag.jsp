@@ -1,6 +1,3 @@
-<%@ page import="org.studyroom.control.HibernateUtil" %>
-<%@ page import="org.studyroom.control.dao.UserDAO" %>
-<%@ page import="org.studyroom.model.entity.User" %>
 <%--
   Created by IntelliJ IDEA.
   org.studyroom.model.entity.User: Federico
@@ -11,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="css/questionformStyle.css" media="screen"/>
-<html>
+<html style="background-color: rgb(233, 234, 237)">
 <%
     User thisUser = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), request.getRemoteUser());
     pageContext.setAttribute("user", thisUser);

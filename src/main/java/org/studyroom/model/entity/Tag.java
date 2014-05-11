@@ -40,6 +40,10 @@ public class Tag {
         questions.add(question);
     }
 
+    public void deleteQuestion(Question question) {
+        questions.remove(question);
+    }
+
     /*getters and setters*/
 
     public List<Question> getQuestions() {

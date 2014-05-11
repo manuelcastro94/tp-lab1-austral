@@ -25,7 +25,7 @@
                                                                               width="20" height="20"></a>
                 </div>
             </c:if>
-            <c:if test="${question.getUser().equals(user)}">
+            <c:if test="${question.getUser().equals(user)  && !question.isClosed()}">
                 <div class="EditButton">
                     <a href="secured/post/post.jsp?edit&q=${question.getId()}"><img src="/studyroom/images/edit.ico"
                                                                                     width="20" height="20"></a>
@@ -47,19 +47,28 @@
         </c:if>
     </div>
     <c:if test="${!filterByTag && filterByGoTo}">
-        <div class="AnswersClass">
+        <c:if test="${question.getAnswers().size()>0}">
             <c:forEach var="answer" items="${question.getAnswers()}" varStatus="pStatus">
-                <div class="AnswerClass">
-                    <c:set var="logged" value="${logged}" scope="request"/>
+                <div class="AnswersClass">
+                <c:set var="logged" value="${logged}" scope="request"/>
                     <c:set var="answer" value="${answer}" scope="request"/>
                     <%@include file="../class/answerclass.jsp" %>
                 </div>
             </c:forEach>
-        </div>
-        <c:if test="${!question.isClosed()}">
-            <div class="AnswerClassNode">
-                <%@include file="/secured/post/answer.jsp" %>
-            </div>
+
+        </c:if>
+        <c:if test="${!question.isClosed() && logged}">
+            <c:if test="${question.getAnswers().size()==0}">
+                <div class="AnswerButton">
+                    <a href="secured/post/post.jsp?q=${question.getId()}"> Responder </a>
+                </div>
+            </c:if>
+            <c:if test="${question.getAnswers().size()>0}">
+                <div class="AnswerButton"
+                     style="background-color: rgb(246, 247, 248); margin-top: -1px; margin-left: 520px">
+                    <a href="secured/post/post.jsp?q=${question.getId()}"> Responder </a>
+                </div>
+            </c:if>
         </c:if>
     </c:if>
 </div>

@@ -14,6 +14,8 @@
 <link rel="stylesheet" type="text/css" href="css/questionformStyle.css" media="screen"/>
 <html>
 <%
+    String answer = ((Answer) request.getAttribute("answer")).getAnswer();
+    pageContext.setAttribute("str", PostChecker.decode(answer));
     User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), request.getRemoteUser());
     request.setAttribute("user", user);
     request.setAttribute("diffUser", !(((Answer) request.getAttribute("answer")).getUser()).equals(user));
@@ -25,10 +27,11 @@
     </div>
 </c:if>
 <div class="UserAnswer">
-    <c:out value="${answer.getUser().getEmail()}"/><p>
+    <a href="/studyroom/home/userprofile.jsp?u=${answer.getUser().getEmail()}"> <c:out
+            value="${answer.getUser().getEmail()}"/></a>
 </div>
 <div class="Answer">
-    <c:out value="${answer}" escapeXml="false"/><p>
+    <c:out value="${str}" escapeXml="false"/><p>
 </div>
 <div class="AnswerControlPanelClass">
     <c:if test="${!user.hasVoted(answer) && logged && diffUser}">

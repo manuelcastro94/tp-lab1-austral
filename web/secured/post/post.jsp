@@ -3,6 +3,8 @@
 <%@ page import="static org.studyroom.model.Constants.QUESTION_HIDDEN_ID_VALUE" %>
 <%@ page import="org.studyroom.control.dao.QuestionDao" %>
 <%@ page import="org.studyroom.model.Constants" %>
+<%@ page import="org.studyroom.model.entity.Question" %>
+<%@ page import="java.util.Arrays" %>
 <%--
   Created by IntelliJ IDEA.
   User: Federico
@@ -20,28 +22,32 @@
     boolean asking = request.getQueryString().contains("ask");
     boolean responding = request.getQueryString().contains("q=") && !request.getQueryString().contains("edit");
     boolean editing = request.getQueryString().contains("edit&q=");
-    String questionStr = "";
+    Question question = null;
     if (editing) {
-        questionStr = QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), Long.parseLong(request.getQueryString().substring(7))).getQuestion();
+        question = QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), Long.parseLong(request.getQueryString().substring(7)));
     }
     pageContext.setAttribute("responding", responding);
     pageContext.setAttribute("editing", editing);
     pageContext.setAttribute("asking", asking);
-    pageContext.setAttribute("questionToEdit", questionStr);
+    pageContext.setAttribute("questionStr", editing ? question.getQuestion() : "");
+    pageContext.setAttribute("questionTitle", editing ? question.getTitle() : "Untitled question");
+    pageContext.setAttribute("questionTags", editing ? Arrays.toString(question.getTags().toArray()).replace("[", "").replace("]", "").replace(", ", ";") : "");
 %>
 <SCRIPT language="javascript">
+    var i = 0;
     function add(link) {
         if (link.value != "") {
             //Create an input type dynamically.
             var element = document.createElement("input");
             element.type = "text";
+            element.name = i;
             element.contenteditable = false;
             element.value = link;
             var foo = document.getElementById("youtubeLinks");
             document.getElementById('mediaInput').value = '';
             //Append the element in page (in span).
             foo.appendChild(element);
-
+            i++;
         }
     }
 </SCRIPT>
@@ -51,8 +57,9 @@
     <input type="hidden"
            name="<%=QUESTION_HIDDEN_ID_VALUE%>"
            value="<%=request.getQueryString()%>"/>
-    <INPUT value="Untitled question" id="<%=Constants.TITLE_FIELD%>" name="<%=Constants.TITLE_FIELD%>"/>
-
+    <c:if test="${!responding}">
+        <INPUT value="${questionTitle}" id="<%=Constants.TITLE_FIELD%>" name="<%=Constants.TITLE_FIELD%>"/>
+    </c:if>
     <div id="sample">
         <script type="text/javascript" src="../../editor/nicEdit.js"></script>
         <script type="text/javascript">
@@ -62,7 +69,7 @@
             });
         </script>
         <textarea id="<%=Constants.TEXT_AREA%>" name="<%=Constants.TEXT_AREA%>" cols="40" style="width: 100%;">
-            <%=questionStr%>
+            ${questionStr}
         </textarea><br/>
 
         <div name="media">
@@ -76,7 +83,7 @@
         <c:if test="${!responding || editing}">
             <div id="tags">
                 <label>Tags:
-                    <input type="text" name="tags"/>
+                    <input type="text" name="tags" value="${questionTags}"/>
                 </label>(separate with ; and don't leave spaces example c#;html;java)
             </div>
         </c:if>

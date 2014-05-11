@@ -27,6 +27,6 @@ public class CloseQuestionServlet extends HttpServlet {
         Question question = QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), questionID);
         question.setClosed(true);
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);
-        resp.sendRedirect("/studyroom/index.jsp");
+        resp.sendRedirect("/studyroom/goTo?goto&q=" + question.getId());
     }
 }
