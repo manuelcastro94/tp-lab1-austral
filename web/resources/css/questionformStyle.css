@@ -1,0 +1,259 @@
+@-moz-keyframes a {
+    from {
+        transform: rotate(70deg) !important; /*70*/
+    }
+
+    to {
+        transform: rotate(0deg) !important; /*70*/
+    }
+}
+
+/*    un intento de sombra
+border: 8px solid rgba(0,0,0,0);
+    -moz-border-bottom-colors:rgba(0, 0, 0,.1)rgba(0, 0, 0,.2)rgba(0, 0, 0,.3)rgba(0, 0, 0,.4)rgba(0, 0, 0,.5)rgba(0, 0, 0,.6)rgba(0, 0, 0,.7) rgb(208, 209, 213);
+    -moz-border-top-colors:rgba(0, 0, 0,.1)rgba(0, 0, 0,.2)rgba(0, 0, 0,.3)rgba(0, 0, 0,.4)rgba(0, 0, 0,.5)rgba(0, 0, 0,.6)rgba(0, 0, 0,.7) rgb(208, 209, 213);
+    -moz-border-left-colors:rgba(0, 0, 0,.1)rgba(0, 0, 0,.2)rgba(0, 0, 0,.3)rgba(0, 0, 0,.4)rgba(0, 0, 0,.5)rgba(0, 0, 0,.6)rgba(0, 0, 0,.7) rgb(208, 209, 213);
+    -moz-border-right-colors:rgba(0, 0, 0,.1)rgba(0, 0, 0,.2)rgba(0, 0, 0,.3)rgba(0, 0, 0,.4)rgba(0, 0, 0,.5)rgba(0, 0, 0,.6)rgba(0, 0, 0,.7) rgb(208, 209, 213);
+*/
+
+.GeneralClass {
+    /*border: solid 1px rgb(208,209,213);*/
+    /*border-radius: 5px;*/
+    /*animation-name: a !important;*/
+    /*animation-duration: 10s!important;*/
+    width: 600px;
+    margin-bottom: 100px;
+}
+
+.QuestionsClass {
+    margin-top: 50px;
+    width: 598px;
+    padding-bottom: 0px;
+    border: solid 1px rgb(208, 209, 213);
+    background-color: rgb(255, 255, 255);
+}
+
+.AnswersClass {
+    background-color: rgb(246, 247, 248);
+    border: solid 1px rgb(208, 209, 213);
+    margin-top: -1px;
+    width: 550px;
+    margin-left: 48px;
+    padding-bottom: 20px;
+}
+
+.UserAnswer {
+    text-align: right;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    background-color: rgb(78, 171, 103);
+    display: inline-block;
+    height: 20px;
+    float: right;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.UserQuestion a:visited,
+.UserQuestion a:link,
+.UserAnswer a:visited,
+.UserAnswer a:link {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.UserQuestion {
+    float: left;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-right: solid 1px rgb(208, 209, 213);
+    background-color: rgb(68, 158, 213);
+    display: inline-block;
+    height: 20px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.Answer {
+    padding: 25px;
+    min-height: 80px;
+}
+
+.Question {
+    padding: 25px;
+    padding-top: 40px;
+}
+
+.Tags {
+    float: left;
+    display: inline-block;
+    background-color: #ffffff;
+    border: solid 1px rgb(208, 209, 213);
+    border-top: none;
+    height: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    margin-left: -1px;
+    margin-top: 0px;
+}
+
+.AnswerButton {
+    float: right;
+    text-align: right;
+    border: solid 1px rgb(208, 209, 213);
+    border-top: none;
+    height: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    margin-top: -1px;
+    margin-right: 50px;
+    background-color: #ffffff;
+}
+
+.AnswerControlPanelClass {
+    text-align: center;
+    border-bottom: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    border-top: solid 1px rgb(208, 209, 213);
+    background-color: rgb(246, 247, 248);
+    padding: 5px;
+    width: 20px;
+    margin-left: -31px;
+    margin-top: -70px;
+    margin-bottom: -1px;
+}
+
+#mainQuestionBody:not(#mainTitle):not(#loginForm) {
+    /*margin-top: 50px;*/
+    /*margin-left: calc(50% - 300px);*/
+}
+
+.ClosedQuestion {
+    background-image: url("../../resources/images/closed.png");
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    margin-left: 530px;
+    margin-top: -25px;
+    z-index: 1;
+}
+
+.Marked {
+    background-image: url("../../resources/images/check.png");
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    margin-left: 510px;
+    margin-top: 20px;
+    z-index: 0;
+}
+
+.VoteUP {
+    width: 20px;
+    height: 20px;
+}
+
+.VoteDown {
+    width: 20px;
+    height: 20px;
+}
+
+.Check {
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+}
+
+.QuestionControlPanelClass {
+    text-align: left;
+    color: #ffffff;
+    background-color: rgb(255, 255, 255);
+    /*display: inline-block;*/
+    position: relative;
+    float: right;
+    margin-top: -1px;
+    margin-right: -31px;
+    border-top: solid 1px rgb(208, 209, 213);
+    border-bottom: solid 1px rgb(208, 209, 213);
+}
+
+.QuestionControlPanelClass > * {
+    height: 20px;
+    width: 20px;
+    padding: 5px;
+    border-right: solid 1px rgb(208, 209, 213);
+    margin-top: -1px;
+}
+
+.AnswersNum {
+    text-align: left;
+    height: 20px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border: solid 1px rgb(208, 209, 213);
+    border-top: none;
+    background-color: rgb(255, 255, 255);
+    float: right;
+    margin-top: 0px;
+    margin-right: -1px;
+}
+
+.Title {
+    text-align: center;
+    height: 20px;
+    float: right;
+    min-width: 200px;
+    max-width: 200px;
+    margin-right: 150px;
+    margin-top: -25px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-top: solid 1px rgb(208, 209, 213);
+    border-left: solid 1px rgb(208, 209, 213);
+    border-right: solid 1px rgb(208, 209, 213);
+    background-color: rgb(255, 255, 255);
+}
+
+#QuestionList {
+    margin-top: 50px;
+}
+
+.Shadow {
+    display: none; /*Quitar linea para mostar sombra, hay un problema con la altura del div*/
+    overflow: auto;
+    position: absolute;
+    z-index: -9999;
+    width: 600px;
+    height: 100px;
+    padding-bottom: 30px;
+    padding-right: 0px;
+    box-shadow: -20px 20px 30px 20px rgba(50, 50, 50, 0.55);
+}
+
+.ShadowAnswer {
+    display: none; /*Quitar linea para mostar sombra*/
+    overflow: auto;
+    position: absolute;
+    background-color: rgba(50, 50, 50, 0.0);
+    z-index: -9999;
+    width: 550px;
+    height: 100px;
+    margin-top: -40px;
+    padding-bottom: 40px;
+    box-shadow: -20px 20px 30px 20px rgba(50, 50, 50, 0.55);
+}

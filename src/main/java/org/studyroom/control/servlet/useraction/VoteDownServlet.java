@@ -1,10 +1,10 @@
 package org.studyroom.control.servlet.useraction;
 
-import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.AnswerDao;
 import org.studyroom.control.dao.UserDAO;
-import org.studyroom.model.entity.Answer;
-import org.studyroom.model.entity.User;
+import org.studyroom.control.utilities.HibernateUtil;
+import org.studyroom.model.entities.Answer;
+import org.studyroom.model.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

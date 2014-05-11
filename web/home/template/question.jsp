@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" type="text/css" href="css/questionformStyle.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="resources/css/questionformStyle.css" media="screen"/>
 <%
     pageContext.setAttribute("logged", request.getRemoteUser() != null);
     pageContext.setAttribute("filterByTag", request.getQueryString() != null && request.getQueryString().contains("byTag"));
@@ -21,19 +21,21 @@
         <div class="QuestionControlPanelClass">
             <c:if test="${!filterByGoTo}">
                 <div class="GoToClass">
-                    <a href="/studyroom/goTo?goto&q=${question.getId()}"><img src="/studyroom/images/goto.ico"
+                    <a href="/studyroom/goTo?goto&q=${question.getId()}"><img src="/studyroom/resources/images/goto.ico"
                                                                               width="20" height="20"></a>
                 </div>
             </c:if>
             <c:if test="${question.getUser().equals(user)  && !question.isClosed()}">
                 <div class="EditButton">
-                    <a href="secured/post/post.jsp?edit&q=${question.getId()}"><img src="/studyroom/images/edit.ico"
-                                                                                    width="20" height="20"></a>
+                    <a href="secured/post/post.jsp?edit&q=${question.getId()}"><img
+                            src="/studyroom/resources/images/edit.ico"
+                            width="20" height="20"></a>
                 </div>
                 <c:if test="${!question.isClosed()}">
                     <div class="closed">
-                        <a href="/studyroom/close?q=${question.getId()}"><img src="/studyroom/images/close.ico"
-                                                                              width="20" height="20"></a>
+                        <a href="/studyroom/close?q=${question.getId()}"><img
+                                src="/studyroom/resources/images/close.ico"
+                                width="20" height="20"></a>
                     </div>
                 </c:if>
             </c:if>
@@ -50,9 +52,9 @@
         <c:if test="${question.getAnswers().size()>0}">
             <c:forEach var="answer" items="${question.getAnswers()}" varStatus="pStatus">
                 <div class="AnswersClass">
-                <c:set var="logged" value="${logged}" scope="request"/>
+                    <c:set var="logged" value="${logged}" scope="request"/>
                     <c:set var="answer" value="${answer}" scope="request"/>
-                    <%@include file="../class/answerclass.jsp" %>
+                    <jsp:include page="../class/answerclass.jsp"/>
                 </div>
             </c:forEach>
 

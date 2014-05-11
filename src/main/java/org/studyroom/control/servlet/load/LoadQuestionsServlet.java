@@ -1,8 +1,8 @@
 package org.studyroom.control.servlet.load;
 
-import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.QuestionDao;
-import org.studyroom.model.entity.Question;
+import org.studyroom.control.utilities.HibernateUtil;
+import org.studyroom.model.entities.Question;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -27,6 +27,14 @@ public class LoadQuestionsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         List<Question> questions = QuestionDao.getInstance().getQuestions(HibernateUtil.getGuestSession());
+        if (req.getQueryString() != null) {
+            if (req.getQueryString().contains("orderBy=NoAnswers")) {
+                Question.OrderByNoAnswersFirst(questions);
+            } else if (req.getQueryString().contains("orderBy=MoreAnswers")) {
+                Question.OrderByMoreAnswersFirst(questions);
+            }
+
+        }
         req.setAttribute("questions", questions);
         ServletContext context = getServletContext();
         RequestDispatcher rd = context.getRequestDispatcher("/home/home.jsp");

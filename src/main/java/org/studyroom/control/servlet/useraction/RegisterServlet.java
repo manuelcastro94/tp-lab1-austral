@@ -1,9 +1,9 @@
 package org.studyroom.control.servlet.useraction;
 
-import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.UserDAO;
+import org.studyroom.control.utilities.HibernateUtil;
 import org.studyroom.model.Constants;
-import org.studyroom.model.entity.User;
+import org.studyroom.model.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
- * org.studyroom.model.entity.User: Federico F. Favale
+ * org.studyroom.model.entities.User: Federico F. Favale
  * Date: 28/03/2014
  * Time: 21:44
  * To change this template use File | Settings | File Templates.
@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
             UserDAO.getInstance().addUser(HibernateUtil.getGuestSession(), newUser);
             resp.sendRedirect("/studyroom/index.jsp");
         } else {
-            resp.sendRedirect("/studyroom/register/registerpage.jsp?noavailable");
+            resp.sendRedirect("/studyroom/home/register/registerpage.jsp?noavailable");
         }
 
 

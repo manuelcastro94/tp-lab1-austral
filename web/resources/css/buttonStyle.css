@@ -1,0 +1,57 @@
+input[type ="submit"] {
+
+    padding: 4px 9px;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 15px;
+    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+input[value = "Log In"] {
+    background: rgb(233, 234, 237);
+    border: 1px outset #a8a7ac;
+
+}
+
+input[value = "Log In"]:hover {
+    border-top-color: #a8a7ac;
+    background: #c2c1c6;
+    color: #000000;
+}
+
+input[value = "Log In"]:active {
+    border-top-color: #a8a7ac;
+    background: #a8a7ac;
+
+}
+
+input[value = "Sign In"] {
+    background: #02bd50;
+    border: 1px outset #606060;
+    background: -webkit-gradient(linear, left top, left bottom, from(#02bd50), to(#827e31));
+    background: -webkit-linear-gradient(top, #02bd50, #827e31);
+    background: -moz-linear-gradient(top, #02bd50, #827e31);
+    background: -ms-linear-gradient(top, #02bd50, #827e31);
+    background: -o-linear-gradient(top, #02bd50, #827e31);
+    color: white;
+}
+
+input[value = "Sign In"]:hover {
+    border: 1px outset #606060;
+    background: #029646;
+    color: white;
+}
+
+input[value = "Sign In"]:active {
+    border: 1px outset #606060;
+    background: #028341;
+
+}
+
+.singinButoon > * {
+    top: 25px;
+    position: fixed;
+    right: 30px !important;
+}

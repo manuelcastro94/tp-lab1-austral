@@ -1,10 +1,10 @@
 package org.studyroom.control.servlet.useraction;
 
-import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.control.dao.UserDAO;
-import org.studyroom.model.entity.Question;
-import org.studyroom.model.entity.User;
+import org.studyroom.control.utilities.HibernateUtil;
+import org.studyroom.model.entities.Question;
+import org.studyroom.model.entities.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -33,7 +33,7 @@ public class GoToQuestionServlet extends HttpServlet {
         req.setAttribute("question", question);
         req.setAttribute("user", thisUser);
         ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/home/fullquestionview.jsp");
+        RequestDispatcher rd = context.getRequestDispatcher("/home/subpages/fullquestionview.jsp");
         rd.forward(req, resp);
     }
 }

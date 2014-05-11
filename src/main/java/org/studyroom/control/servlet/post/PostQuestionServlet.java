@@ -1,12 +1,12 @@
 package org.studyroom.control.servlet.post;
 
-import org.studyroom.control.HibernateUtil;
-import org.studyroom.control.PostChecker;
 import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.control.dao.UserDAO;
+import org.studyroom.control.utilities.Converter;
+import org.studyroom.control.utilities.HibernateUtil;
 import org.studyroom.model.Constants;
-import org.studyroom.model.entity.Question;
-import org.studyroom.model.entity.User;
+import org.studyroom.model.entities.Question;
+import org.studyroom.model.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class PostQuestionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
-        String questionStr = req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req));
+        String questionStr = req.getParameter(Constants.TEXT_AREA).concat(Converter.getMedia(req));
         String questionTitle = req.getParameter(Constants.TITLE_FIELD);
         Question question = QuestionDao.makeQuestion(user, questionTitle, questionStr, req.getParameter("tags").split(";"));
         QuestionDao.getInstance().addQuestion(HibernateUtil.getGuestSession(), question);

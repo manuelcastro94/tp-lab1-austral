@@ -2,7 +2,7 @@ package org.studyroom.control.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.studyroom.model.entity.Tag;
+import org.studyroom.model.entities.Tag;
 
 
 /**

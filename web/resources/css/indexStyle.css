@@ -1,0 +1,27 @@
+body {
+    /*background-color: #d2b48c;*/
+    background-color: rgb(233, 234, 237);
+    margin-left: 1%;
+    margin-right: 1%;
+    font-family: sans-serif;
+    padding-top: 100px;
+}
+
+#mainTitle {
+    position: absolute;
+    font-style: italic;
+    left: 10px;
+    top: 20px;
+}
+
+#MainControlPanel {
+    position: fixed;
+    border: solid 1px rgb(208, 209, 213);
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    right: 25px;
+    /*margin-right: 10px;*/
+    width: 500px;
+}
+
+

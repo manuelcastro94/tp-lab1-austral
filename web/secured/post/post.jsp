@@ -1,9 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="org.studyroom.control.HibernateUtil" %>
-<%@ page import="static org.studyroom.model.Constants.QUESTION_HIDDEN_ID_VALUE" %>
 <%@ page import="org.studyroom.control.dao.QuestionDao" %>
 <%@ page import="org.studyroom.model.Constants" %>
-<%@ page import="org.studyroom.model.entity.Question" %>
+<%@ page import="org.studyroom.model.entities.Question" %>
 <%@ page import="java.util.Arrays" %>
 <%--
   Created by IntelliJ IDEA.
@@ -13,71 +10,47 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script type="text/javascript" src="../../resources/javascript/editor/nicEdit.js"></script>
+<script type="text/javascript" src="../../resources/javascript/dynamicVideoLoader.js"></script>
 <html>
-<head>
-    <title>Post</title>
-</head>
-<body>
 <%
-    boolean asking = request.getQueryString().contains("ask");
-    boolean responding = request.getQueryString().contains("q=") && !request.getQueryString().contains("edit");
     boolean editing = request.getQueryString().contains("edit&q=");
-    Question question = null;
-    if (editing) {
-        question = QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), Long.parseLong(request.getQueryString().substring(7)));
-    }
-    pageContext.setAttribute("responding", responding);
-    pageContext.setAttribute("editing", editing);
-    pageContext.setAttribute("asking", asking);
+    Question question = editing ? QuestionDao.getInstance().getQuestion(org.studyroom.control.utilities.HibernateUtil.getGuestSession(), Long.parseLong(request.getQueryString().substring(7))) : null;
+    pageContext.setAttribute("responding", request.getQueryString().contains("q=") && !request.getQueryString().contains("edit"));
+    pageContext.setAttribute("editing", request.getQueryString().contains("edit&q="));
+    pageContext.setAttribute("asking", request.getQueryString().contains("ask"));
     pageContext.setAttribute("questionStr", editing ? question.getQuestion() : "");
     pageContext.setAttribute("questionTitle", editing ? question.getTitle() : "Untitled question");
     pageContext.setAttribute("questionTags", editing ? Arrays.toString(question.getTags().toArray()).replace("[", "").replace("]", "").replace(", ", ";") : "");
+    pageContext.setAttribute("hidden", Constants.QUESTION_HIDDEN_ID_VALUE);
+    pageContext.setAttribute("tittleField", Constants.TITLE_FIELD);
+    pageContext.setAttribute("textArea", Constants.TEXT_AREA);
+    pageContext.setAttribute("query", request.getQueryString());
 %>
-<SCRIPT language="javascript">
-    var i = 0;
-    function add(link) {
-        if (link.value != "") {
-            //Create an input type dynamically.
-            var element = document.createElement("input");
-            element.type = "text";
-            element.name = i;
-            element.contenteditable = false;
-            element.value = link;
-            var foo = document.getElementById("youtubeLinks");
-            document.getElementById('mediaInput').value = '';
-            //Append the element in page (in span).
-            foo.appendChild(element);
-            i++;
-        }
-    }
-</SCRIPT>
+<body>
 <a id="home" href="/studyroom/index.jsp">Home</a>
-
 <form id="postForm" action="/studyroom/post" method="GET" name="form1">
     <input type="hidden"
-           name="<%=QUESTION_HIDDEN_ID_VALUE%>"
-           value="<%=request.getQueryString()%>"/>
+           name="${hidden}"
+           value="${query}"/>
     <c:if test="${!responding}">
-        <INPUT value="${questionTitle}" id="<%=Constants.TITLE_FIELD%>" name="<%=Constants.TITLE_FIELD%>"/>
+        <INPUT value="${questionTitle}" id="${tittleField}" name="${tittleField}"/>
     </c:if>
     <div id="sample">
-        <script type="text/javascript" src="../../editor/nicEdit.js"></script>
         <script type="text/javascript">
             bkLib.onDomLoaded(function () {
-                //nicEditors.allTextAreas();
-                new nicEditor().panelInstance('<%=Constants.TEXT_AREA%>');
+                new nicEditor().panelInstance('${textArea}');
             });
         </script>
-        <textarea id="<%=Constants.TEXT_AREA%>" name="<%=Constants.TEXT_AREA%>" cols="40" style="width: 100%;">
-            ${questionStr}
+        <textarea id="${textArea}" name="${textArea}" cols="40" style="width: 100%;">
+        ${questionStr}
         </textarea><br/>
-
         <div name="media">
             <label>Youtube video:
                 <input type="text" id="mediaInput"/>
             </label>
             <INPUT type="button" value="Add" onclick="add(document.getElementById('mediaInput').value)"/>
-
             <div id="youtubeLinks" style="max-width: 100px"></div>
         </div>
         <c:if test="${!responding || editing}">

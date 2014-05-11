@@ -33,9 +33,9 @@
         <property name="hbm2ddl.auto">update</property>
 
 
-        <mapping class="org.studyroom.model.entity.User"></mapping>
-        <mapping class="org.studyroom.model.entity.Question"></mapping>
-        <mapping class="org.studyroom.model.entity.Answer"></mapping>
-        <mapping class="org.studyroom.model.entity.Tag"></mapping>
+        <mapping class="org.studyroom.model.entities.User"></mapping>
+        <mapping class="org.studyroom.model.entities.Question"></mapping>
+        <mapping class="org.studyroom.model.entities.Answer"></mapping>
+        <mapping class="org.studyroom.model.entities.Tag"></mapping>
     </session-factory>
 </hibernate-configuration>

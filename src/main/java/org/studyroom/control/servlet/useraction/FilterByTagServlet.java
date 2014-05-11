@@ -1,8 +1,8 @@
 package org.studyroom.control.servlet.useraction;
 
-import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.TagDao;
-import org.studyroom.model.entity.Tag;
+import org.studyroom.control.utilities.HibernateUtil;
+import org.studyroom.model.entities.Tag;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -29,7 +29,7 @@ public class FilterByTagServlet extends HttpServlet {
         req.setAttribute("tag", tag);
         req.setAttribute("questionsByTag", tag.getQuestions());
         ServletContext context = getServletContext();
-        RequestDispatcher rd = context.getRequestDispatcher("/home/filterquestionbytag.jsp");
+        RequestDispatcher rd = context.getRequestDispatcher("/home/subpages/filterquestionbytag.jsp");
         rd.forward(req, res);
     }
 }

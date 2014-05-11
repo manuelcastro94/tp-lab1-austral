@@ -1,0 +1,16 @@
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-image: url("../images/libary.jpg");
+}
+
+.loginbox {
+    margin: 70px auto;
+    width: 400px;
+    height: 350px;
+    background-color: rgb(237, 218, 223);
+
+}

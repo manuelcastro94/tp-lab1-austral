@@ -1,13 +1,13 @@
 package org.studyroom.control.servlet.post;
 
-import org.studyroom.control.HibernateUtil;
-import org.studyroom.control.PostChecker;
 import org.studyroom.control.dao.AnswerDao;
 import org.studyroom.control.dao.QuestionDao;
 import org.studyroom.control.dao.UserDAO;
+import org.studyroom.control.utilities.Converter;
+import org.studyroom.control.utilities.HibernateUtil;
 import org.studyroom.model.Constants;
-import org.studyroom.model.entity.Answer;
-import org.studyroom.model.entity.User;
+import org.studyroom.model.entities.Answer;
+import org.studyroom.model.entities.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +32,7 @@ public class PostAnswerServlet extends HttpServlet {
         long questionId = Long.parseLong(req.getParameter(Constants.QUESTION_HIDDEN_ID_VALUE).replaceFirst("q=", ""));
         User user = UserDAO.getInstance().getUser(HibernateUtil.getGuestSession(), req.getRemoteUser());
         Answer answer = new Answer(QuestionDao.getInstance().getQuestion(HibernateUtil.getGuestSession(), questionId),
-                req.getParameter(Constants.TEXT_AREA).concat(PostChecker.getMedia(req)), user
+                req.getParameter(Constants.TEXT_AREA).concat(Converter.getMedia(req)), user
         );
         AnswerDao.getInstance().addAnswer(HibernateUtil.getGuestSession(), answer);
         resp.sendRedirect("/studyroom/goTo?goto&q=" + questionId);

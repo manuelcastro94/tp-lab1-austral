@@ -1,0 +1,11 @@
+#loginForm {
+  top: 25px;
+  right: 110px;
+  position: fixed;
+}
+
+#invalid {
+  margin-top: -20px;
+  margin-right: 274px;
+  color: #b70000;
+}

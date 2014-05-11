@@ -1,8 +1,8 @@
 package org.studyroom.control.servlet.useraction;
 
-import org.studyroom.control.HibernateUtil;
 import org.studyroom.control.dao.QuestionDao;
-import org.studyroom.model.entity.Question;
+import org.studyroom.control.utilities.HibernateUtil;
+import org.studyroom.model.entities.Question;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
