@@ -11,6 +11,6 @@
     <a id="home" href="/studyroom/index.jsp">Home</a>
 </head>
 <body>
-<%@include file="template/question.jsp" %>
+<jsp:include page="template/question.jsp"/>
 </body>
 </html>

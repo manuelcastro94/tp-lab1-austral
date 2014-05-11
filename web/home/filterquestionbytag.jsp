@@ -1,3 +1,6 @@
+<%@ page import="org.studyroom.control.HibernateUtil" %>
+<%@ page import="org.studyroom.control.dao.UserDAO" %>
+<%@ page import="org.studyroom.model.entity.User" %>
 <%--
   Created by IntelliJ IDEA.
   org.studyroom.model.entity.User: Federico
@@ -21,7 +24,7 @@
 <c:forEach var="questionByTag" items="${requestScope.questionsByTag}" varStatus="pStatus">
     <div class="GeneralClass">
         <c:set var="question" value="${questionByTag}" scope="request"/>
-        <%@include file="template/question.jsp" %>
+        <jsp:include page="template/question.jsp"/>
     </div>
 </c:forEach>
 </body>

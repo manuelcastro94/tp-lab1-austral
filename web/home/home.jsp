@@ -1,3 +1,4 @@
+<%@ page import="org.studyroom.model.Constants" %>
 <link rel="stylesheet" type="text/css" href="css/indexStyle.css" media="screen"/>
 <html>
 <head id="mainHeader">
@@ -7,14 +8,14 @@
 
     <h1 id="mainTitle"><%=Constants.HOME_TITLE%>
     </h1>
-    <%@include file="../login/contextualloginform.jsp" %>
+    <jsp:include page="../login/contextualloginform.jsp"/>
 </head>
 <body>
 <div>
-    <%@include file="../secured/post/ask.jsp" %>
+    <jsp:include page="../secured/post/ask.jsp"/>
 </div>
 <div id="QuestionList">
-    <%@include file="template/questionlist.jsp" %>
+    <jsp:include page="template/questionlist.jsp"/>
 </div>
 
 

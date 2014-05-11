@@ -17,7 +17,7 @@
 <c:forEach var="question" items="${requestScope.questions}" varStatus="pStatus">
     <div class="GeneralClass" style="width: 650px">
         <c:set var="question" value="${question}" scope="request"/>
-        <%@include file="question.jsp" %>
+        <jsp:include page="question.jsp"/>
     </div>
 </c:forEach>
 </body>
